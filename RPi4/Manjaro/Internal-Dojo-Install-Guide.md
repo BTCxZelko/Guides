@@ -194,6 +194,7 @@ Copy the v3 onion address
 2. Go to Tor Browser (can be on your main computer or phone)
 3. Paste the v3 onion address and add /admin to the end
 > For example: blahblahblahblahblahblahblahblah.onion/admin
+
 You will see the QR Pairing code (I recommend waiting for the full install) API tab and PushTX tab
  - The API Tab will let you know where the blockheaders are currently at
  - The PushTx will give you the Blockheight and additional information
