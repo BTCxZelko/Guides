@@ -1,10 +1,13 @@
-# What is Samourai Dojo?
->Samourai Dojo is the backing server for Samourai Wallet. Provides HD account & loose addresses (BIP47) balances & transactions lists. Provides unspent output lists to the wallet. PushTX endpoint broadcasts transactions through the backing bitcoind node
-
-For more information on Samourai Wallet, Dojo, and Whirlpool visit their the Samourai Wallet Github [Here](https://github.com/Samourai-Wallet)
-
 # Samourai Wallet's Dojo Installation Guides for RPi4 and Odroid N2
 Repo will serve as a central hub to find installation guides for RPi4 and Odroid N2, as well as external application guides 
+
+# What is Samourai Dojo?
+As stated by the Samourai Team:
+>Samourai Dojo is the backing server for Samourai Wallet. Provides HD account & loose addresses (BIP47) balances & transactions lists. Provides unspent output lists to the wallet. PushTX endpoint broadcasts transactions through the backing bitcoind node
+
+This implementation connects to your wallet via Tor for increased privacy and allowing for connectivity anywhere without forwarding ports and exposing your home IP address.
+
+For more information on Samourai Wallet, Dojo, and Whirlpool visit their the Samourai Wallet Github [Here](https://github.com/Samourai-Wallet)
 
 ## Recommended Hardware
 The Full Dojo installation, which includes a fresh sync of the Bitcoin blockchain, requires a little over 3GB of RAM during the initial sync and drops to a little less than 2GB after. There for recommend: [Odroid N2](https://www.hardkernel.com/shop/odroid-n2-with-4gbyte-ram/) or the [Raspberry Pi4](https://www.canakit.com/raspberry-pi-4-4gb.html?cid=usd&src=raspberrypi) 
