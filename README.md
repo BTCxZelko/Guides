@@ -1,5 +1,7 @@
 # What is Samourai Dojo?
-Samourai Dojo is a Docker loadout of a full bitcoind node run completely over Tor for increased privacy and connects to your Samourai Wallet from anywhere without any port configuring. For more information on Samourai Wallet, Dojo, and Whirlpool visit their the Samourai Wallet Github [Here](https://github.com/Samourai-Wallet)
+>Samourai Dojo is the backing server for Samourai Wallet. Provides HD account & loose addresses (BIP47) balances & transactions lists. Provides unspent output lists to the wallet. PushTX endpoint broadcasts transactions through the backing bitcoind node
+
+For more information on Samourai Wallet, Dojo, and Whirlpool visit their the Samourai Wallet Github [Here](https://github.com/Samourai-Wallet)
 
 # Samourai Wallet's Dojo Installation Guides for RPi4 and Odroid N2
 Repo will serve as a central hub to find installation guides for RPi4 and Odroid N2, as well as external application guides 
