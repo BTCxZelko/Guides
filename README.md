@@ -30,8 +30,25 @@ This guide will cover [Raspbian](https://www.raspberrypi.org/downloads/raspbian/
 
 ## Cases
 We strongly recommend getting a case that keeps the Pi or Odroid cool. 
-- For RPi4: 
+1. For RPi4: 
    - Either with active cooling cases such as:[Flirc](https://www.amazon.com/Flirc-Raspberry-Pi-Case-Silver/dp/B07WG4DW52/ref=sr_1_8?keywords=pi4+case&qid=1571082492&sr=8-8) 
    - Or a case with a fan such as [Miuzei](https://www.amazon.com/Miuzei-Raspberry-Cooling-Heat-Sinks-Supply/dp/B07TTN1M7G/ref=sr_1_5?crid=2FLR4GW4Y32PN&keywords=pi4%2Bcase%2Bwith%2Bfan&qid=1571082607&sprefix=pi4%2Bcase%2B%2Caps%2C222&sr=8-5&th=1) 
-- For Odroid:
-   - 
+
+2. For Odroid:
+   - [KSSB Case](https://ameridroid.com/products/kksb-odroid-n2-case)
+   - [ODROID-N2 Case](https://ameridroid.com/products/odroid-n2-case)
+
+## Installation
+Now that you have gotten your hardware together and assembled, we have a few different installation options for you to choose from:
+1. Complete Installation of Dojo *referred to as Internal Dojo*
+   - RPi4
+    - Raspbian
+    - Manjaro
+   - Odroid
+    - Raspbian
+2. Installation of Dojo utilizing a currently running full Bitcoin Core node (0.18.0 or higher)
+   - RPi4
+    - Raspbian
+    - Manjaro (coming)
+   - Odriod
+    - Raspbian
