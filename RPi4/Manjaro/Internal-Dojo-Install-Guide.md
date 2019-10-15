@@ -104,7 +104,8 @@ git clone https://github.com/Samourai-Wallet/samourai-dojo.git
 cd
 mv samourai-dojo/* dojo/
 ```
-Now all your Dojo documents are all in your permenant Dojo Directory. Let's go in an modify the confs for Manjaro-ARM
+# Now all your Dojo documents are all in your permenant Dojo Directory. Let's go in an modify the confs for Manjaro-ARM
+
 1. First bitcoid conf file
 ```
 cd dojo/docker/my-dojo/conf
@@ -115,6 +116,7 @@ BITCOIND_RPC_PASSWORD=dojorpcpassword  <-- edit (alphanumerical, NO SYMBOLS)
 -----------
 ```
 **Save and exit with Ctrl+X, Y, Enter** 
+
 2. Edit mysql conf file
 ```
 nano docker-mysql.conf.tpl
@@ -125,6 +127,7 @@ MYSQL_PASSWORD=password <--- edit
 -----------
 ```
 **Save and exit with Ctrl+X, Y, Enter**
+
 3. Edit Node conf 
 ```
 nano docker-node.conf.tpl
@@ -176,6 +179,7 @@ nano Dockerfile
 cd ..
 ```
 ## 8. Install Dojo
+
 Now for the moment you've been waiting for... Installing Dojo. Now that all our confs and Dockerfiles are set and ready to go Simply enter the following command
 ```
 sudo ./dojo.sh install
@@ -185,16 +189,21 @@ When the IBD begins you may see _connection refused_ or _connection failed_ many
 
 So now sit back and relax. This may take 3-5 days depending on your Internet speed.
 
-##OPTIONAL but Recommended, Maintenance Tool usage
+## OPTIONAL but Recommended, Maintenance Tool usage
+
 To get to your Dojo Maintenance Tool, first get your onion address
+
 1. You can either exit the install logs (ctrl+c), or open a new terminal 
 ```
 cd dojo/docker/my-dojo
 sudo ./dojo.sh onion
 ```
 Copy the v3 onion address
+
 2. Go to Tor Browser (can be on your main computer or phone)
+
 3. Paste the v3 onion address and add /admin to the end
+
 > For example: blahblahblahblahblahblahblahblah.onion/admin
 
 You will see the QR Pairing code (I recommend waiting for the full install) API tab and PushTX tab
