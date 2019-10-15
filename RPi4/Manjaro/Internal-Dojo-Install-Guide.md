@@ -50,7 +50,7 @@ Then mount everything specified in fstab with:
 ```
 sudo mount -a
 ```
-## 3. Download docker-ce
+## 3. Install Docker
 ```
 sudo pacman -S docker
 sudo pacman -S docker-compose
