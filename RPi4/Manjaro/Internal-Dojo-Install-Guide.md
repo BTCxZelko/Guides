@@ -147,7 +147,7 @@ cd ..
 cd bitcoin
 nano Dockerfile
 ----------
-##Edit line 9 from 
+##Edit line 9 from: 
     ENV     BITCOIN_URL        https://bitcoincore.org/bin/bitcoin-core-0.18.1/bitcoin-0.18.1-x86_64-linux-gnu.tar.gz
 ##Edit line 9 to:
     ENV     BITCOIN_URL         https://bitcoincore.org/bin/bitcoin-core-0.18.1/bitcoin-0.18.1-aarch64-linux-gnu.tar.gz
