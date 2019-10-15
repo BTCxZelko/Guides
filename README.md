@@ -46,9 +46,9 @@ Now that you have gotten your hardware together and assembled, we have a few dif
     - Manjaro
    - Odroid
     - Raspbian
-2. Installation of Dojo utilizing a currently running full Bitcoin Core node (0.18.0 or higher)
+2. Installation of Dojo utilizing an external Bitcoin Core node *referred to as External Dojo*
    - RPi4
-    - Raspbian
-    - Manjaro (coming)
+     - Raspbian
+     - Manjaro (coming)
    - Odriod
-    - Raspbian
+     - Raspbian
