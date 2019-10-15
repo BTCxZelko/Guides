@@ -157,7 +157,7 @@ nano Dockerfile
     ENV     BITCOIN_SHA256      88f343af72803b851c7da13874cc5525026b0b55e63e1b5e1298390c4688adc6
 ----------
 ```
-**_For those new to linux you can paste from your clipboard into terminal/command line with Ctrl+Shift+V_**
+>For those new to linux you can paste from your clipboard into terminal/command line with Ctrl+Shift+V
 
 **Save and exit with Ctrl+X, Y, Enter**
 
