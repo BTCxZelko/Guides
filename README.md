@@ -42,10 +42,10 @@ We strongly recommend getting a case that keeps the Pi or Odroid cool.
 Now that you have gotten your hardware together and assembled, we have a few different installation options for you to choose from:
 1. Complete Installation of Dojo *referred to as Internal Dojo*
    - RPi4
-    - Raspbian
-    - Manjaro
+     - Raspbian
+     - Manjaro
    - Odroid
-    - Raspbian
+     - Raspbian
 2. Installation of Dojo utilizing an external Bitcoin Core node *referred to as External Dojo*
    - RPi4
      - Raspbian
