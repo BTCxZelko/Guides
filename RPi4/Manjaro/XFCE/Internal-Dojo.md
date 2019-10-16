@@ -2,7 +2,7 @@
 
 >**WARNING: If you plan to run a step to include Whirlpool AND Electrs you should head to the Minimal Set-up. XFCE is Resource heavy and the RAM quickly runs out. If you don't plan on running Electrs then feel free to proceed.**
 
-## 1. Now that we have started up Manjar-Arm, open up terminal and get updates
+## 1. Now that we have started up Manjaro-Arm, open up terminal and get updates
 ```
 sudo pacman -Syu
 ```
