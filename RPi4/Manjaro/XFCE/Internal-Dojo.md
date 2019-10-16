@@ -1,9 +1,13 @@
 # Post initial OS installation
+
+>**WARNING: If you plan to run a step to include Whirlpool AND Electrs you should head to the Minimal Set-up. XFCE is Resource heavy and the RAM quickly runs out. If you don't plan on running Electrs then feel free to proceed.**
+
 ## 1. Now that we have started up Manjar-Arm, open up terminal and get updates
 ```
 sudo pacman -Syu
 ```
 ## 2. Mount and configure external device
+
 Attach your external storage through one of the USB 3.0 ports. This will attach your storage to the default /media/yourusername/yourexternalstorage location. It's better to make a seperate attachment point for it and make sure your Pi 4 attaches the external disk to the same location every time you reboot.
 
 If you have bought a ready external drive, there's a very good chance that it's formatted to NTFS - that will not work for us. Let's check:
