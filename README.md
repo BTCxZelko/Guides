@@ -42,13 +42,14 @@ We strongly recommend getting a case that keeps the Pi or Odroid cool.
 Now that you have gotten your hardware together and assembled, we have a few different installation options for you to choose from:
 1. Complete Installation of Dojo *referred to as Internal Dojo*
    - RPi4
-     - Raspbian
-     - [Manjaro-ARM](https://github.com/BTCxZelko/Samourai-Dojo-RPi4-and-Odroid-Install-Guides/blob/master/RPi4/Manjaro/Internal-Dojo-Install-Guide.md)
+     - [Raspbian]((https://github.com/BTCxZelko/Samourai-Dojo-RPi4-and-Odroid-Install-Guides/tree/master/RPi4/Raspbian)
+     - [Manjaro-ARM XFCE](https://github.com/BTCxZelko/Samourai-Dojo-RPi4-and-Odroid-Install-Guides/blob/master/RPi4/Manjaro/XFCE)
+     - [Manjaro-ARM Minimal](https://github.com/BTCxZelko/Samourai-Dojo-RPi4-and-Odroid-Install-Guides/tree/master/RPi4/Manjaro/Minimal)
    - Odroid
-     - Raspbian
+     - [Raspbian](https://github.com/BTCxZelko/Samourai-Dojo-RPi4-and-Odroid-Install-Guides/tree/master/Odroid/Raspbian)
 2. Installation of Dojo utilizing an external Bitcoin Core node *referred to as External Dojo*
    - RPi4
      - Raspbian
      - Manjaro-ARM (coming)
    - Odriod
-     - Raspbian
+     - [Raspbian](https://github.com/BTCxZelko/Samourai-Dojo-RPi4-and-Odroid-Install-Guides/tree/master/Odroid/Raspbian/)
