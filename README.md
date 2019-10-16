@@ -43,13 +43,13 @@ Now that you have gotten your hardware together and assembled, we have a few dif
 1. Complete Installation of Dojo *referred to as Internal Dojo*
    - RPi4
      - [Raspbian]((https://github.com/BTCxZelko/Samourai-Dojo-RPi4-and-Odroid-Install-Guides/tree/master/RPi4/Raspbian)
-     - [Manjaro-ARM XFCE](https://github.com/BTCxZelko/Samourai-Dojo-RPi4-and-Odroid-Install-Guides/blob/master/RPi4/Manjaro/XFCE)
-     - [Manjaro-ARM Minimal](https://github.com/BTCxZelko/Samourai-Dojo-RPi4-and-Odroid-Install-Guides/tree/master/RPi4/Manjaro/Minimal)
+     - [Manjaro-ARM XFCE](https://github.com/BTCxZelko/Samourai-Dojo-RPi4-and-Odroid-Install-Guides/blob/master/RPi4/Manjaro/XFCE/Internal-Dojo.md)
+     - [Manjaro-ARM Minimal](https://github.com/BTCxZelko/Samourai-Dojo-RPi4-and-Odroid-Install-Guides/blob/master/RPi4/Manjaro/Minimal/Internal-Dojo.md)
    - Odroid
      - [Raspbian](https://github.com/BTCxZelko/Samourai-Dojo-RPi4-and-Odroid-Install-Guides/tree/master/Odroid/Raspbian/Internal-Dojo-Install-Guide.md)
 2. Installation of Dojo utilizing an external Bitcoin Core node *referred to as External Dojo*
    - RPi4
      - Raspbian
-     - Manjaro-ARM (coming)
+     - Manjaro-ARM XFCE(coming)
    - Odriod
      - [Raspbian](https://github.com/BTCxZelko/Samourai-Dojo-RPi4-and-Odroid-Install-Guides/blob/master/Odroid/Raspbian/External-Bitcoind-Install-Guide.md)
