@@ -215,3 +215,38 @@ You will see the QR Pairing code (I recommend waiting for the full install) API 
  - The PushTx will give you the Blockheight and additional information
  
 So you are Downloading your full Bitcoin Node over Tor!
+
+# Hardening your Device
+So once you've completed the installation of Dojo before we do anything else, you'll want to lock down your device from potential attackers. We are going to this by installing Fail2Ban and UFW
+
+1. Install Fail2ban
+
+```
+sudo pacman -S fail2ban
+```
+
+2. UFW (Uncomplicated Firewall)
+
+```
+sudo pacman -S ufw
+```
+
+Now lets give UFW some rules so we lock it down but we still have access
+
+```
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow from 192.XXX.X.X/24 to any port 22 comment 'SSH access restricted to local LAN only'
+sudo ufw allow from 192.XXX.X.X/24 to any port 8899 comment 'allow whirlpool-gui on local network to access whirlpool-cli'
+sudo ufw enable
+sudo systemctl enable ufw
+
+## Verify Status
+sudo ufw status
+
+To                         Action      From
+--                         ------      ----
+22                         ALLOW       192.XXX.X.X/24             # SSH access restricted to local LAN only
+8899                       ALLOW       192.XXX.X.X/24             # allow whirlpool-gui on local network to access whirlpool-cli
+```
+> **NOTE: CHANGE 192.XXX.X.X/24 to your IP range. This is generally 192.168.1.0/24 or something similar**
