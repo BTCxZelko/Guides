@@ -108,7 +108,7 @@ git clone https://github.com/Samourai-Wallet/samourai-dojo.git
 cd
 mv samourai-dojo/* dojo/
 ```
-# Now all your Dojo documents are all in your permenant Dojo Directory. Let's go in an modify the confs for Manjaro-ARM
+# Now all your Dojo documents are all in your permenant Dojo Directory. Let's go in an modify the conf files
 
 1. First bitcoid conf file
 ```
@@ -151,13 +151,13 @@ cd ..
 cd bitcoin
 nano Dockerfile
 ----------
-##Edit line 9 from: 
+## Edit line 9 from: 
     ENV     BITCOIN_URL        https://bitcoincore.org/bin/bitcoin-core-0.18.1/bitcoin-0.18.1-x86_64-linux-gnu.tar.gz
-##Edit line 9 to:
+## Edit line 9 to:
     ENV     BITCOIN_URL         https://bitcoincore.org/bin/bitcoin-core-0.18.1/bitcoin-0.18.1-aarch64-linux-gnu.tar.gz
-##Edit line 10 from:
+## Edit line 10 from:
     ENV     BITCOIN_SHA256      600d1db5e751fa85903e935a01a74f5cc57e1e7473c15fd3e17ed21e202cfe5a
-##Edit line 10 to: 
+## Edit line 10 to: 
     ENV     BITCOIN_SHA256      88f343af72803b851c7da13874cc5525026b0b55e63e1b5e1298390c4688adc6
 ----------
 ```
@@ -171,15 +171,15 @@ cd ..
 cd mysql
 nano Dockerfile
 ----------
-##Edit line 1 from:
+## Edit line 1 from:
     FROM    mysql:5.7.25
-##Edit line 1 to:
+## Edit line 1 to:
     FROM    mariadb:latest
 ----------
 ```
 **Save and exit with Ctrl+X, Y, Enter**
 ```
-##Go back to main dojo directory dojo/docker/my-dojo
+## Go back to main dojo directory dojo/docker/my-dojo
 cd ..
 ```
 ## 8. Install Dojo
