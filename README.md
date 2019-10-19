@@ -1,5 +1,11 @@
-# Samourai Wallet's Dojo Installation Guides for RPi4 and Odroid N2
-Repo will serve as a central hub to find installation guides for RPi4 and Odroid N2, as well as external application guides 
+# Ronin Dojo Guides
+Ronin Dojo is the RPi4 and Odriod N2 installation variant of Samourai Wallet's Dojo. This is not a change to their code or application, rather the installation process modified specifically for RPi4/Odriod. 
+
+Our Mission is to bring FULL on-chain self-sovereignity at an afforable price!
+
+> A Ronin was a samurai warrior in feudal Japan without a master or lord — known as a daimyo. A samurai could become a ronin in several different ways: his master might die or fall from power or the samurai might lose his master's favor or patronage and be cast off
+
+Be Your own MASTER!
 
 # What is Samourai Dojo?
 As stated by the Samourai Team:
