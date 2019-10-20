@@ -33,5 +33,3 @@ In this case MyDojo is a set of Docker containers providing a full Samourai back
 * a maintenance tool accessible through a Tor web browser
 
 ## 2B. [Coming Soon]
-
-If you have some spare time please make a github account and edit these guide. You can also fork the guide to your own version, maybe for a purpose such as adding more detailed notes, or perhaps for making more drastic changes like a different method of deployment. It was a community effort that helped me bring this guide together, and it may take the same effort to keep this guide polished and up to date.  Feel free to revise things, make suggestions, become contributor, update versions, et cetera. Thank you!
