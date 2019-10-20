@@ -23,6 +23,7 @@
 # Run setup-odroid
 # $ setup-odroid
 # Change hostname, password
+# May ask to restart the odroid
 
 # 4. 
 # Download script
