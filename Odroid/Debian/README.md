@@ -9,7 +9,7 @@ Choose one of the methods of deployment below. What is it that you want, need, o
 
 ## 1. [Internal Dojo Install Guide](https://github.com/BTCxZelko/Samourai-Dojo-RPi4-and-Odroid-Install-Guides/blob/master/Odroid/Raspbian/Internal-Dojo-Install-Guide.md)
 
-This is inspired by what is considered to be the "default dojo deployment". This setup is recommended to Samourai users who feel comfortable with a few command lines and want to learn about running a Dojo. If you are not willing to learn these basic command line steps this is not for you. You might want to check out option [1A](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Convenience-Scripts/Internal-Dojo-Install-Script.sh) below or a "plug 'n play" Dojo like [this one](https://shop.nodl.it). 
+This is inspired by what is considered to be the "default dojo deployment". This setup is recommended to Samourai users who feel comfortable with a few command lines and want to learn about running a Dojo. If you are not willing to learn these basic command line steps this is not for you. You might want to check out option [1A](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Convenience-Scripts/Internal-Dojo-Install-Script.sh) (see below) or a "plug 'n play" Dojo like [this one](https://shop.nodl.it). 
 
 Samourai Dojo is the backing server for Samourai Wallet. It provides HD account, loose addresses (BIP47) balances, and transactions lists. Also provides unspent output lists to the wallet. PushTX endpoint broadcasts transactions through the backing bitcoind node. 
 
