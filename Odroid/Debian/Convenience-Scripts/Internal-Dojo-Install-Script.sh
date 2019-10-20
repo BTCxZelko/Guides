@@ -2,35 +2,36 @@
 ## By @GuerraMoneta
 
 ## Deploy a Dojo and begin syncing the blockchain in ~30 minutes
-## Intended for Odroid N2 + Debian Stretch 
+## Intended for Odroid N2 + Debian Stretch
 ## https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#1-hardware-requirements
 
 ## Instructions:
 # Do not include the "$" when typing a command! The "$" simply marks that something is a command.
 
-# 1. 
-# SSH or login to you odroid
+# 1.
+# Flash the OS on to SD card and boot up your odroid
+# SSH in or login once powered on, make sure external drive is plugged in
 # $ ssh root@IP.ADDRESS.ODROID.HERE
 # Username: root
 # Password: odroid
 
-# 2. 
+# 2.
 # Install updates, sudo, and curl
 # $ apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y
 # $ apt-get install sudo curl -y
 
-# 3. 
+# 3.
 # Run setup-odroid
 # $ setup-odroid
 # Change hostname, password
 # May ask to restart the odroid
 
-# 4. 
+# 4.
 # Download script
 # Always analyze scripts before downloading and running them!!!
-# $ curl https://raw.githubusercontent.com/s2l1/Headless-Samourai-Dojo/master/Default_Dojo_Setup_Script.sh -o Default_Dojo_Setup_Script.sh
+# $ curl https://raw.githubusercontent.com/BTCxZelko/Ronin-Dojo/master/Odroid/Debian/Convenience-Scripts/Internal-Dojo-Install-Script.sh -o Internal-Dojo-Install-Script.sh
 
-# 5. 
+# 5.
 # Take note of EDITs, and input your desires values
 # Use a search function like Ctrl + F in browser to find "EDIT 1", "EDIT 2", "EDIT 3"...
 # Use nano to change "XXX" to your desired values
@@ -40,14 +41,14 @@
 # Find "EDIT 2" and "EDIT 3" and take note of the scripts used
 # Find "EDIT 4" "EDIT 5" "EDIT 6" and replace "XXX" with whatever you want, but make it secure
 
-# 6. 
+# 6.
 # Go root, give the script permission, and run it using ./ when you are ready
 # $ sudo su -
 # $ chmod 555 Default_Dojo_Setup_Script.sh
 # $ ./Default_Dojo_Setup_Script.sh
 # When you are finished type "exit" to leave root
 
-# 7. 
+# 7.
 # When the script begins it will ask you to format the SSD.
 # Press 'd'
 # Press 'w'
@@ -60,17 +61,18 @@
 # May ask if you want to remove a signature? type yes
 # Press 'w'
 
-# 8. 
-# The script will take a few minutes to run from here. 
+# 8.
+# The script will take a few minutes to run from here.
 # You will need to select a timezone and have few Y/N to input, so you must be present while for the script to finish.
-# Find "EDIT 2" and "EDIT 3" and take note of the scripts used. 
-# The installer will remind you to verify scripts. Answer Y/y once you are ready. 
+# Find "EDIT 2" and "EDIT 3" and take note of the scripts used.
+# The installer will remind you to verify scripts. Answer Y/y once you are ready.
+# If you choose N/n to exit the script, the script will be modified to at docker/docker-compose install
 
-# 9. 
+# 9.
 # Once Dojo is installed wait for bitcoind to sync or copy the data over from another machine
 # https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#11-scp
 #
-# 10. 
+# 10.
 # Now would also be a great time to add new user with sudo and lock the root account
 # Use adduser command to manually add user
 # $ adduser XXX
@@ -95,7 +97,7 @@ YELLOW='\033[1;33m'
 # used for color with ${YELLOW}
 CYAN='\033[0;36m'
 # used for color with ${CYAN}
-NC='\033[0m' 
+NC='\033[0m'
 # No Color
 
 # system setup starts
@@ -279,10 +281,10 @@ ln -s /usr/bin/python3 /usr/bin/python
 # docker setup starts
 echo -e "${CYAN}"
 echo "***"
-echo "Installing docker and docker-compose"
+echo "Preparing docker and docker-compose install"
 echo "***"
 echo -e "${NC}"
-sleep 5s
+sleep 3s
 
 echo -e "${CYAN}"
 echo "***"
@@ -296,7 +298,7 @@ sleep 5s
 # EDIT 3
 # is a convenient script, be sure to check it out before running!!!
 # check the git commit which shows when get-docker.sh script is run
-# see line 19 here https://github.com/docker/docker-install/blob/master/install.sh 
+# see line 19 here https://github.com/docker/docker-install/blob/master/install.sh
 # do not trust, always verify!
 
 echo -e "${CYAN}"
@@ -325,19 +327,23 @@ done
 return $retval
 }
 
-# if Y/y then procees with install
+# if Y/y then proceed with install
+# if N/n scroll to bottom and see else
 if asksure; then
   echo -e "${CYAN}"
   echo "***"
   echo "Proceeding with install"
   echo "***"
   echo -e "${NC}"
-  
+  sleep 3s
+
 echo -e "${CYAN}"
 echo "***"
 echo "Installing docker and docker-compose"
+echo "The get-docker.sh script will show git commit for you to verify"
 echo "***"
 echo -e "${NC}"
+# script resumes from here if you choose N/n to exit
 sleep 5s
 sh get-docker.sh
 python3 -m pip install --upgrade docker-compose
@@ -352,7 +358,7 @@ sleep 5s
 
 echo -e "${CYAN}"
 echo "***"
-echo "Take a look at what PIP has installed on your system"
+echo "Check PIP list for docker-compose"
 echo "***"
 echo -e "${NC}"
 python3 -m pip list
@@ -506,12 +512,23 @@ cd ~/dojo_dir/docker/my-dojo
 # end dojo setup
 # if logs look good go ahead and copy over blockchain data, see instructions at top
 
-else
+  else
+  echo -e "${CYAN}"
+  echo "***"
+  echo "Modifying script to start from docker and docker-compose install next run"
+  echo "***"
+  echo -e "${NC}"
+  sleep 5s
+
   echo -e "${CYAN}"
   echo "***"
   echo "Exiting now"
   echo "***"
   echo -e "${NC}"
+  sleep 3s
   # else exit script when N/n is pressed
+
+  sed -i "103,339d" ~/Internal-Dojo-Install-Script.sh
+  # delete lines because N/n was chosen, will start again at docker/docker-compose install
 
 fi
