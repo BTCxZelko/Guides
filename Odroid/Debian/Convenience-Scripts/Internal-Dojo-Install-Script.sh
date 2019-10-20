@@ -408,7 +408,7 @@ echo "***"
 echo -e "${NC}"
 cd ~
 sleep 5s
-curl https://github.com/Samourai-Wallet/samourai-dojo/archive/master.zip -o master.zip
+curl -fsSL https://github.com/Samourai-Wallet/samourai-dojo/archive/master.zip -o master.zip
 unzip master.zip
 sleep 3s
 
