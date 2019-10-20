@@ -22,31 +22,14 @@
 # 3. 
 # Run setup-odroid
 # $ setup-odroid
-# Change hostname, password, create new user with sudo privelege
+# Change hostname, password
 
-# You can also use the following command to give user "XXX" the ability to use sudo
-# $ adduser XXX sudo
-
-# Use adduser command to manually add users if you want
-# $ adduser XXX
-
-# Modify passwd command to -u if you need to unlock the root account
-# $ passwd -u root
-
-# 4. Lock the root account
-# $ passwd -l root
-
-# Go ahead and restart the odroid
-# $ shutdown -r now
-
-# Login using your new user instead of root
-
-# 5. 
+# 4. 
 # Download script
 # Always analyze scripts before downloading and running them!!!
 # $ curl https://raw.githubusercontent.com/s2l1/Headless-Samourai-Dojo/master/Default_Dojo_Setup_Script.sh -o Default_Dojo_Setup_Script.sh
 
-# 6. 
+# 5. 
 # Take note of EDITs, and input your desires values
 # Use a search function like Ctrl + F in browser to find "EDIT 1", "EDIT 2", "EDIT 3"...
 # Use nano to change "XXX" to your desired values
@@ -56,14 +39,14 @@
 # Find "EDIT 2" and "EDIT 3" and take note of the scripts used
 # Find "EDIT 4" "EDIT 5" "EDIT 6" and replace "XXX" with whatever you want, but make it secure
 
-# 7. 
+# 6. 
 # Go root, give the script permission, and run it using ./ when you are ready
 # $ sudo su -
 # $ chmod 555 Default_Dojo_Setup_Script.sh
 # $ ./Default_Dojo_Setup_Script.sh
 # When you are finished type "exit" to leave root
 
-# 8. 
+# 7. 
 # When the script begins it will ask you to format the SSD.
 # Press 'd'
 # Press 'w'
@@ -76,15 +59,35 @@
 # May ask if you want to remove a signature? type yes
 # Press 'w'
 
-# 9. 
+# 8. 
 # The script will take a few minutes to run from here. 
 # You will need to select a timezone and have few Y/N to input, so you must be present while for the script to finish.
 # Find "EDIT 2" and "EDIT 3" and take note of the scripts used. 
 # The installer will remind you to verify scripts. Answer Y/y once you are ready. 
 
-# 10. 
+# 9. 
 # Once Dojo is installed wait for bitcoind to sync or copy the data over from another machine
 # https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#11-scp
+#
+# 10. 
+# Now would also be a great time to add new user with sudo and lock the root account
+# Use adduser command to manually add user
+# $ adduser XXX
+
+# Give user "XXX" the ability to use sudo
+# $ adduser XXX sudo
+
+# Lock the root account
+# $ passwd -l root
+
+# Modify passwd command to -u if you need to unlock the root account
+# $ passwd -u root
+
+# Go ahead and restart the odroid
+# $ shutdown -r now
+
+# Login using your new user instead of root
+# Have fun!
 ##
 ##
 YELLOW='\033[1;33m'
