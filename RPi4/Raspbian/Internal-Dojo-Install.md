@@ -266,13 +266,13 @@ So once you've completed the installation of Dojo before we do anything else, yo
 1. Install Fail2ban
 
 ```
-sudo pacman -S fail2ban
+sudo apt-get install fail2ban
 ```
 
 2. UFW (Uncomplicated Firewall)
 
 ```
-sudo pacman -S ufw
+sudo apt-get install ufw
 ```
 
 Now lets give UFW some rules so we lock it down but we still have access
