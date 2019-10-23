@@ -251,3 +251,6 @@ To                         Action      From
 8899                       ALLOW       192.XXX.X.X/24             # allow whirlpool-gui on local network to access whirlpool-cli
 ```
 > **NOTE: CHANGE 192.XXX.X.X/24 to your IP range. This is generally 192.168.1.0/24 or something similar**
+
+If you are looking to get the most out of your New RONIN DOJO node visit the below sections: 
+   - [WHIRLPOOL](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/RPi4/Manjaro/Whirlpool-Guide.md): Run your own whirlpool-client-cli so you can keep your mixes going 24/7 
