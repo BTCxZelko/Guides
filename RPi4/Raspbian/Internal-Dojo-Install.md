@@ -298,4 +298,4 @@ To                         Action      From
 
 If you are looking to get the most out of your New RONIN DOJO node visit the below sections: 
    - ELECTRS: connect your hardware devices to your own private server powered by your RONIN Dojo
-   - WHIRLPOOL: Run your own whirlpool-client-cli so you can keep your mixes going 24/7 
+   - [WHIRLPOOL](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/RPi4/Raspbian/Whirlpool-Guide.md): Run your own whirlpool-client-cli so you can keep your mixes going 24/7 
