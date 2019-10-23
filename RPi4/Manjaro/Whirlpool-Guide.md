@@ -83,9 +83,8 @@ This time it will ask for your Mobile wallet passpharase to authenticate the wal
 
 It should load all your potential mixs. and be running.
 
-Close out the tmux window
-
-**Ctl+B , D**
+Close out the tmux window with:
+   **Ctl+B , D**
 
 **NOTE: To get back in later simply enter the following command:**
 
