@@ -2,22 +2,24 @@
 **for ODROID N2**
 <sub><sup>by @GuerraMoneta</sup></sub>
 
-This is inspired by what is considered to be the "default dojo deployment". This setup is recommended to Samourai users who feel comfortable with a few command lines. More advanced users may find [this guide](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Advanced_Dojo_Setup.md) helpful for things like running external bitcoind. I have tried my best to give as much detail as possible for new users.
+This guide will be installing Dojo with all settings left at their defaults. I recommend this guide to Samourai users who feel comfortable with a few command lines. I have tried to give as much detail as possible for newer users. More advanced users may find [this guide](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/External-Bitcoind-Install-Guide.md) helpful for things like running bitcoind outside of docker. 
+
+Don't want to go through this guide? Already familiar or just looking to get deployed ASAP? Check out this [Convenience Script](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Convenience-Scripts/Internal-Dojo-Install-Script.sh). It should have Dojo up and bitcoind syncing within in ~30 minutes.
 
 # Table of Contents
-* [**HARDWARE REQUIREMENTS**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#1-hardware-requirements) 
-* [**OPERATING SYSTEM**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#2-operating-system)
-* [**BLOCKCHAIN DATA**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#3-blockchain-data)
-* [**NETWORK**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#4-network)
-* [**SSH SUDO AND ROOT**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#5-ssh-sudo-and-root)
-* [**SYSTEM SETUP**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#6-system-setup)
-* [**UFW**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#7-ufw)
-* [**PIP**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#8-pip)
-* [**DOCKER**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#9-docker)
-* [**DOJO**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#10-dojo)
-* [**SCP**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#11-scp)
-* [**FINALIZE DOJO**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#12-finalize-dojo)
-* [**PAIRING WALLET WITH DOJO**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#13-pairing-wallet-with-dojo)
+* [**1. HARDWARE REQUIREMENTS**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#1-hardware-requirements)
+* [**2. OPERATING SYSTEM**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#2-operating-system)
+* [**3. BLOCKCHAIN DATA**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#3-blockchain-data)
+* [**4. NETWORK**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#4-network)
+* [**5. SSH SUDO AND ROOT**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#5-ssh-sudo-and-root)
+* [**6. SYSTEM SETUP**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#6-system-setup)
+* [**7. UFW**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#7-ufw)
+* [**8. PIP**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#8-pip)
+* [**9. DOCKER**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#9-docker)
+* [**10. DOJO**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#10-dojo)
+* [**11. SCP**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#11-scp)
+* [**12. FINALIZE DOJO**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#12-finalize-dojo)
+* [**13. PAIRING WALLET WITH DOJO**](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#13-pairing-wallet-with-dojo)
 
 ```
 # My sources:
@@ -25,26 +27,24 @@ This is inspired by what is considered to be the "default dojo deployment". This
 Dojo Telegram - https://t.me/samourai_dojo
 Dojo Docs - https://github.com/Samourai-Wallet/samourai-dojo/blob/master/doc/DOCKER_setup.md#first-time-setup
 Advanced Setups - https://github.com/Samourai-Wallet/samourai-dojo/blob/master/doc/DOCKER_advanced_setups.md
-Raspibolt - https://stadicus.github.io/RaspiBolt/
-Pi 4 Dojo Guide - https://burcak-baskan.gitbook.io/workspace/
 ```
 
-**NEWBIE TIPS:** Each command has `$` before it, and the outputs of the command are marked `>` to avoid confusion. `#` is symbol fo a comment. Do not enter these as part of a command. If you are not sure about commands, stuck, learning, etc. try visiting the information links and doing the Optional Reading. Look up terms that you do not know. The Dojo Telegram chat is also very active and helpful. I am trying my best to educate anyone new throughout this guide. 
+**NEWBIE TIPS:** Each command has `$` before it, and the outputs of the command are marked `>` to avoid confusion. `#` is symbol fo a comment. Do not enter these as part of a command. If you are not sure about commands, stuck, learning, etc. try visiting the information links and doing the Optional Reading. Look up terms that you do not know. The Dojo Telegram chat is also very active and helpful.
 
 ## 1. [HARDWARE REQUIREMENTS]
-- `https://forum.odroid.com/viewtopic.php?f=176&t=33781`
 
-You will need an ODROID N2 and I do suggest getting a case for it. I am using this with a 1tb Samsung Portable SSD, USB3.0, hardline ethernet connection, and SD card. You could also use an old 500gb HDD if you have a spare on hand to tinker with.
+* [ODROID N2 4gb](https://forum.odroid.com/viewtopic.php?f=176&t=33781)
+* [Samsung T5](https://www.amazon.com/Samsung-T5-Portable-SSD-MU-PA1T0B/dp/B073H552FJ/ref=sr_1_1?fst=as%3Aoff&qid=1571081118&refinements=p_n_feature_three_browse-bin%3A6797521011&rnid=6797515011&s=pc&sr=1-1) or [Seagate Fast SSD](https://www.amazon.com/Seagate-External-Reversible-Type-C-STCM1000400/dp/B07DX7D744)
+* [Samsung EVO+ 64GB](https://www.amazon.com/Samsung-MicroSDXC-Memory-Adapter-MB-MC64GA/dp/B06XFWPXYD/ref=sr_1_4?keywords=EVO%2B+SD+card&qid=1571081610&s=electronics&sr=1-4)
 
-You will also need a Windows / Linux / Mac with good specs that is on the same network as the ODROID. This setup will take up about as much room as a standard home router/modem and look clean clean once finished.
+I suggest adding a UPS battery back up later on to be sure your ODROID wont lose power during bad weather etc.
 
-Add a UPS battery back up later on to be sure your ODROID wont lose power during bad weather etc. 
-
+More info on Hardware can be found [here](https://github.com/BTCxZelko/Ronin-Dojo#recommended-hardware).
 
 ## 2. [OPERATING SYSTEM]
-- `https://forum.odroid.com/viewtopic.php?f=179&t=33865`
 
-By meveric » Tue Feb 19, 2019 8:29 AM: "This is the first version of my Debian Stretch image for the ODROID N2. It is uses the 4.9 LTS Kernel from Hardkernel. It's a headless server image only with user root. It has all my repositories included, which allows for easy installation and updates of packages such as Kernel and Headers and other packages. The image has my usual setup: means on first boot it's resizing the rootfs partition and configures SSH. It will automatically reboot after the initial setup after which this image is ready to use. Kernel and headers are already installed if you need to build your own drivers. A few basic tools such as htop, mc, vim and bash-completion are already installed."
+* [Debian Stretch](https://forum.odroid.com/viewtopic.php?f=179&t=33865)
+
 ```
 DOWNLOAD: https://oph.mdrjr.net/meveric/images/Stretch/Debian-Stretch64-1.0.1-20190519-N2.img.xz 
 MD5: https://oph.mdrjr.net/meveric/images/Stretch/Debian-Stretch64-1.0.1-20190519-N2.img.xz.md5
@@ -60,7 +60,7 @@ PGP PUBLIC KEY: https://oph.mdrjr.net/meveric/meveric.asc
 ```
 Use the md5, sha512, sig, and the PGP public key to check that the Debian `.img.xz` you have downloaded is authentic. Do not trust, verify! If you are not sure on this please look up “md5 to verify software” and “gpg to verify software.” 
 
-Please take some time to learn as this is used to verify things often. Watch the entire playlist below if you are a newbie and working on getting comfortable using the Windows CMD or Linux Terminal.
+Please take some time to learn as this is used to verify things often. Watch the playlist below if you are a newbie and working on getting comfortable using the Windows CMD or Linux Terminal.
 ```
 Size compressed: 113MB
 Size uncompressed: 897 MB
@@ -74,65 +74,24 @@ https://www.youtube.com/watch?v=plUQ3ZRBL54&list=PLmoQ11MXEmajkNPMvmc8OEeZ0zxOKb
 Optional Reading: How To gpg - https://www.dewinter.com/gnupg_howto/english/GPGMiniHowto-3.html
 Optional Reading: How To md5 - https://www.lifewire.com/validate-md5-checksum-file-4037391 
 ```
-It's ready to be used as a server image. Flash the image on to an SD card and boot up. Give the ODROID some time. As mentioned by meveric above "it will automatically reboot" then it is ready for use.
+Flash the image on to an SD card and boot up. Give the ODROID some time. As meveric says [here](https://forum.odroid.com/viewtopic.php?f=179&t=33865) "it will automatically reboot after the initial setup after which this image is ready to use."
 
 ## 3. [BLOCKCHAIN DATA]
 
-The Bitcoin blockchain records all transactions and basically defines who owns how many bitcoin. This is the most crucial of all information and we should not rely on someone else to provide this data. To set up our Bitcoin Full Node on mainnet, we need to download the whole blockchain (~ 250 GB), verify every Bitcoin transaction that ever occurred, every block ever mined, create an index database for all transactions, so that we can query it later on, calculate all bitcoin address balances (called the UTXO set). Look up "running a bitcoin full node" for additional information.
+If you don't have problem with waiting for the Odroid to sync the bitcoin blockchain, skip this section, and go to part [4](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#4-network).
 
-The ODROID is up to the big task of downloading the blockchain so you may wonder why we are downloading on a faster machine, and copying over the data. The download is not the problem, but to initially process the whole blockchain would take a long time due to its computing power and memory. We need to download and verify the blockchain with Bitcoin Core on your regular computer, and then transfer the data to the ODROID. This needs to be done only once. After that the ODROID can easily keep up with new blocks.
+Syncing the data for bitcoind can take a few days, or you can copy over the data in about ~6 hours. See details in this [explainer](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Explainers/Blockchain-Data.md). 
 
-This guide assumes that many will use a Windows machine, but it should also work with most operating systems. I have done my best to provide linux or mac instructions where possible. You need to have about 250+ GB free disk space available, internally or on an external hard disk (but not the SSD reserved for the ODROID). As indexing creates heavy read/write traffic, the faster your hard disk the better. If you are using linux as a main machine I will assume that you are comfortable lookup up how to download Bitcoin Core.
-
-Using SCP, we will copy the blockchain from the Windows computer over the local network later in this guide.
-
-For now download the Bitcoin Core installer from `bitcoincore.org` and store it in the directory you want to use to download the blockchain. To check the authenticity of the program, we will calculate its checksum and compare it with the checksums provided.
-
-In Windows, I’ll preface all commands you need to enter with `$`, so with the command `$ cd bitcoin` just type `cd bitcoin` and hit enter.
-
-Open the Windows command prompt (Start Menu and type cmd directly and hit Enter), navigate to the directory where you downloaded bitcoin setup.exe file. For me, it’s `C:\Users\USERNAME\Desktop` but you can double check in Windows Explorer. Then use certutil calculate the checksum of the already downloaded program.
-```
-$ cd C:\Users\USERNAME\Desktop
-$ mkdir bitcoin_mainnet
-$ dir
-$ certutil -hashfile bitcoin-0.18.1-win64-setup.exe sha256
->3bac0674c0786689167be2b9f35d2d6e91d5477dee11de753fe3b6e22b93d47c
-```
-Save and later on check this hash 3bac067... against the file SHA256SUMS.asc once you are on step #9 of this guide to verify that it is authentic.
-
-Open Bitcoin Core and leave it to sync.
-
+If you wish to copy the Blockchain data over you will need a Windows, Linux, or Mac machine with decent specs. It must be connected to the same network as the ODROID. Go ahead and download bitcoin core, get the sync process started, and continue with part 4.
 
 ## 4. [NETWORK]
 
-The ODROID got a new IP address from your home network. This address can change over time. To make the ODROID reachable from the internet, we assign it a fixed address.
-
-The fixed address is configured in your network router, this can be the cable modem or the Wifi access point. So we first need to access the router. To find out your routers address start the Command Prompt on a computer that is connected to your home network. 
-```
-#Windows:
-#Open Start Menu and type cmd directly and hit Enter
-$ ipconfig
-
-#Linux/Mac:
-#Open Terminal
-$ ifconfig
-
-#look for “Default Gateway” and note the address (eg. “192.168.0.1”)
-```
-Now open your web browser and access your router by entering the address, like a regular web address. You need to sign in, and now you can look up all network clients in your home network. Your ODROID should be listed here, together with its IP address (eg. “192.168.0.240”).
-
-We now need to set the fixed (static) IP address for the ODROID. Normally, you can find this setting under “DHCP server”. The manual address should be the same as the current address, just change the last part to a lower number (e.g. 192.168.0.240 → 192.168.0.20).
-
-Take note of this new static IP address for your ODROID and apply changes. 
-
-If you have not changed your router's default login password from the default, please do so now. 
-
-Apply and log out of your router. 
-
+Log in to your router and set a static IP address for your ODROID. Take a look at this [explainer](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Explainers/Network.md) if you need help.
 
 ## 5. [SSH, SUDO, AND ROOT]
 
-Go ahead and log in or SSH into your ODROID by using Putty on Windows or Terminal on Linux. The machine must be connected to your local network.
+Go ahead and login with a USB Keyboard, or SSH into your ODROID by using Putty on Windows or Terminal on Mac/Linux. SSH is encouraged as it is very helpful. Now is also a great time to update your system, install sudo, add a new user with sudo privelege, and lock the root account.
+
 ```
 # Default Login Info:
 # Default Username - root
@@ -149,36 +108,30 @@ $ ssh root@IP.OF.ODROID.HERE
 ```
 Now you are connected to your ODROID. 
 
-There's constantly new development for this image and ODROIDs in general. The first thing you should do after the image is up and running is to install all updates and sudo.
-
 ```
 $ apt-get update && apt-get upgrade && apt-get dist-upgrade
 $ apt-get install sudo 
 ```
+Now use the terminal to setup sudo permission on a new user and disable the root account. @Nicholas does a great job [explaining](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Explainers/SSH-Sudo-Root.md) why you should do this.
 
-Now use the terminal to setup sudo permission on a new user and disable the root account. @Nicholas does a great job explaining why you should do this in the following quotation.
+Now let's add the main user, you could think of it as the "admin" user, and add it to the sudo group.
 
-"Ultimately the whole point of a permission set is to separate things. Why should Dojo have access to install system drivers? Why should Tor be able to edit Dojo's database? Stuff like that. Ultimately I'd say it's worth it, if not just for good practices. Having a user with an ssh key is good practice, but then requiring their own credentials (sudo -> root) is just another barrier in case a malicious actor gets into your system.
-
-We disable the root account because it is a matter of the principle of least privilege, there's no point running as root when you don't have to. The difference is relatively slim when dealing with a node that only has one purpose and one user. You can argue that if your user is compromised there might be some security, but with an interactive compromised user this is limited. From my understanding (compromised user -> evil maid attack -> root)".
-
-Now let's add the main user, you could think of it as the "admin" user.
-
-Create the new user, set password, and add it to the group "sudo".
 ``` 
 $ adduser XXX
 $ adduser XXX sudo
 # replace XXX with any username you want
 ```
-Reboot and and log in with the new user "admin".
-
-`$ shutdown -r now`
-
+Reboot and SSH or login again. This time with new user "XXX" instead of "root".
+```
+$ shutdown -r now
+$ ssh XXX@IP.OF.ODROID.HERE
+# example admin@192.168.4.20
+```
 Now lock the “root” account with the following command.
 
 `$ sudo passwd -l root`
 
-Modify the command to `-u` if you need to unlock the root account.
+Modify the command to `-u` if you ever need to unlock the root account.
 
 `$ sudo passwd -u root`
 
@@ -190,11 +143,9 @@ Optional Reading: Backup - https://www.raspberrypi.org/magpi/back-up-raspberry-p
 
 ## 6. [SYSTEM SETUP]
 
-First SSH in or log in to your new "admin" account. 
+Install fail2ban, git, curl, unzip, net-tools, python3, some useful libs, and dependencies. We are using python3 as python2 is now end of life.
 
-Install fail2ban, git, curl, unzip, and net-tools.
-
-`$ sudo apt-get install fail2ban git curl unzip net-tools`
+`$ sudo apt-get install fail2ban git curl unzip net-tools python3-dev libffi-dev libssl-dev build-essential`
 
 Now we will format the SSD, erasing all previous data. Make sure your SSD is plugged in. The external SSD is then attached to the file system and can be accessed as a regular folder (this is called mounting). We will use ext4 format, NTFS will not work.
 ```
@@ -214,19 +165,19 @@ $ sudo fdisk /dev/sda
 # May ask if you want to remove a signature? type yes
 # Press 'w'
 ```
-Take note of the `NAME` for main partition on the external hard disk using the following command.
-
-`$ lsblk -o UUID,NAME,FSTYPE,SIZE,LABEL,MODEL`
-
 Assuming you only have one drive connected, the `NAME` will be `/dev/sda`. Double-check that `/dev/sda` exists, and that its storage capacity is what you expected.
 
-Format the external SSD with Ext4. Use `NAME` from above, example is `/dev/sda1`.
+`$ lsblk -o NAME,FSTYPE,SIZE,LABEL,MODEL`
+
+Format the external SSD with Ext4. Use the `NAME` from the command you just ran, example is `/dev/sda1`.
 
 `$ sudo mkfs.ext4 /dev/sda1`
 
-Copy the `UUID` that is provided as a result of this format command to your notepad.
+Copy the `UUID` that is provided as a result of this format.
 
-Edit the fstab file using nano, then add the line at the end replacing the `UUID` with your own.
+`$ lsblk -o UUID,NAME,FSTYPE,SIZE,LABEL,MODEL`
+
+Edit the fstab file using nano, add the line at the end, replace the `UUID=123456` with your own.
 ```
 $ sudo nano /etc/fstab
 # replace `UUID=123456` with the `UUID` that you just took note of
@@ -236,7 +187,7 @@ Create the directory to add the SSD. Here we will use `/mnt/usb` as the example.
 
 `$ sudo mkdir /mnt/usb`
 
-**NEWBIE TIPS:** `/mnt/usb/` is simply my desired path, and you can choose any path you want for the mounting of your SSD. Any time you see `/mnt/usb/` you should know to change it to your SSD's file path.
+**NEWBIE TIPS:** `/mnt/usb/` is simply a desired path, and you can choose any path you want for the mounting of your SSD. If you chose a different path, then any time you see `/mnt/usb/`, you should know to change it to your SSD's file path.
 
 Mount all drives and then check the file system. Is `/mnt/usb` listed?
 ```
@@ -258,16 +209,15 @@ Here you can change hostname, root password, etc.
 
 Do not move the rootfs to HDD/SSD. I suggest putting OS, Dojo, and any other non-docker software on the SD card. The docker images will be under a subfolder on the external disk.
 
-This tool may ask you to reboot to apply the changes. 
-
+This tool may ask you to reboot to apply the changes.
 ```
 # disabling password login and using SSH Key for login is highly recommended!
-Optional Reading: Login with SSH Key - https://stadicus.github.io/RaspiBolt/raspibolt_20_pi.html#login-with-ssh-keys
-Optional Reading: SSH Key Setup - https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
+Optional Reading: SSH Key Info - https://stadicus.github.io/RaspiBolt/raspibolt_20_pi.html#login-with-ssh-keys
+Optional Reading: SSH Key Info - https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
 ```
 
 ```
-# during setup you can move the swapfile to SSD or disable swap to extend life of your SD card
+# during setup you can move the swapfile to SSD or disable swap if you wish
 Optional Reading: Swap File - https://stadicus.github.io/RaspiBolt/raspibolt_20_pi.html#moving-the-swap-file
 Optional Reading: Extend Life of SD Card - https://raspberrypi.stackexchange.com/questions/169/how-can-i-extend-the-life-of-my-sd-card
 Optional Reading: Mounting External Drive - https://stadicus.github.io/RaspiBolt/raspibolt_20_pi.html#mounting-external-hard-disk 
@@ -277,10 +227,11 @@ Optional Reading: Fstab Guide -https://www.howtogeek.com/howto/38125/htg-explain
 
 ## 7. [UFW]
 
-Enable the Uncomplicated Firewall which controls what traffic is permitted and closes some possible security holes. 
+Enable the Uncomplicated Firewall, which controls what traffic is permitted, and closes some possible security holes. 
 
-The lines that start with `ufw allow from 192.168.0.0/24...` below assumes that the IP address of your ODROID is something like 192.168.0.???, the ??? being any number from 0 to 255. If your IP address is 12.34.56.78, you must adapt this line to `ufw allow from 12.34.56.0/24...`. 
+The lines that start with `ufw allow from 192.168.0.0/24...` below assume that the IP address of your ODROID is something like 192.168.0.???, the ??? being any number from 0 to 255. If your IP address is 12.34.56.78, you must adapt this line to `ufw allow from 12.34.56.0/24...`. 
 ```
+$ sudo su -
 $ apt-get install ufw
 $ ufw default deny incoming
 $ ufw default allow outgoing
@@ -289,6 +240,7 @@ $ ufw allow from 192.168.0.0/24 to any port 8899 comment 'allow whirlpool-gui on
 $ ufw enable
 $ systemctl enable ufw
 $ ufw status
+$ exit
 ```
 ```
 Optional Reading: Connecting to the Network - https://stadicus.github.io/RaspiBolt/raspibolt_20_pi.html#connecting-to-the-network
@@ -297,19 +249,10 @@ Optional Reading: Access restricted for local LAN - https://stadicus.github.io/R
 Optional Reading: Login with SSH keys - https://stadicus.github.io/RaspiBolt/raspibolt_20_pi.html#login-with-ssh-keys
 ```
 
+
 ## 8. [PIP] 
 
-Now install the Python Package Installer which we will utilize soon.
-
-First go to the home directory of the root user and then install the necessary dependencies. 
-
-`$ cd ~`
-
-`$ apt-get install python3-dev libffi-dev libssl-dev build-essential`
-
-**NEWBIE TIPS:** Useful libs to have in the system. Also python2 is end of life so we are using python3.
-
-`Optional Reading: Installing PIP - https://pip.pypa.io/en/stable/installing/`
+Now we will install the Python Package Installer, which we will utilize soon.
 
 To install pip, securely download get-pip.py. “Secure” in this context means using a modern browser or a tool like curl that verifies SSL certificates when downloading from https URLs.
 
@@ -317,80 +260,85 @@ To install pip, securely download get-pip.py. “Secure” in this context means
 
 Then run the following.
 
-`$ python3 get-pip.py`
+`$ sudo python3 get-pip.py`
 
-In the future, when you need to update software with PIP you will use a command similar to the following. 
+In the future, when you need to update software with PIP, you will use a command similar to the following. 
 
-`pip install SoftwareName --upgrade`
+`$ sudo pip install SoftwareNameHere --upgrade`
+
+`Optional Reading: Installing PIP - https://pip.pypa.io/en/stable/installing/`
 
 
 ## 9. [DOCKER]
 
-Now install docker using this method the convenience script. This script is meant for quick and easy install. 
+Now install docker using the get-docker convenience script. This script is meant for quick and easy install.
 
-`$ curl -fsSL https://get.docker.com -o get-docker.sh` 
+First download the script using curl.
 
-`$ sh get-docker.sh`
+`$ curl -fsSL https://get.docker.com -o get-docker.sh`
 
-**NEWBIE TIPS:** Make sure to verify the contents of the script you downloaded matches the contents of `install.sh` located at https://github.com/docker/docker-install before executing. Take this and all security measures seriously by doing some research when necessary.
+**NEWBIE TIPS:** Make sure to verify the contents of this or any script you download! At least check that it matches the contents of `install.sh` located at the [docker github](https://github.com/docker/docker-install). Take this and all security measures seriously by doing some research when necessary.
+
+Then run it.
+
+`$ sudo sh get-docker.sh`
 ```
-# git commit from https://github.com/docker/docker-install
-SCRIPT_COMMIT_SHA="6bf300318ebaab958c4adc341a8c7bb9f3a54a1a"
+# when you run get-docker.sh, the latest git commit from https://github.com/docker/docker-install will show
+# use this to help verify, example, https://github.com/docker/docker-install/commit/f45d7c11389849ff46a6b4d94e0dd1ffebca32c1
+> SCRIPT_COMMIT_SHA="f45d7c11389849ff46a6b4d94e0dd1ffebca32c1"
 ```
-Now we will use pip to install docker-compose, I have noticed that apt-get can install an old version. Better to use the docker-compose install instructions which you can look at in Optional Reading. I will walk you through the pip install approach, though there are a few ways to install the latest version.
-```                         
-$ python3 -m pip install --upgrade docker-compose
-# Let the install finish
-# --upgrade part is only useful if you already have it, which some people may.
-```
-```
-Optional Reading - Install docker-compose - https://docs.docker.com/compose/install/
-Optional Reading - Install docker-compose using pip - https://docs.docker.com/compose/install/#install-using-pip
-```
+
 Now check your docker version. An outdated version can cause problems. 
 
 `$ docker -v`
+
+Now we will use PIP to install docker-compose. I have noticed that apt-get can install an old version. Better to use the docker-compose install instructions which you can look at in Optional Reading. I will walk you through the PIP install approach, though there are a few ways to install the latest version.
+```                         
+$ sudo python3 -m pip install --upgrade docker-compose
+# Let the install finish
+# --upgrade part is only useful if you already have it, which some people may.
+```
 
 Take a look at what PIP has installed on your system.
 
 `$ python3 -m pip list`
 
-Now to configure docker to use the external SSD. Create a new file in text editor. 
+Now configure docker to use the external SSD. Create a new file in text editor. 
 
-`$ nano /etc/docker/daemon.json`
+`$ sudo nano /etc/docker/daemon.json`
 
 Add the following 3 lines.
 ```
 {
                   "data-root": "/mnt/usb/docker"
-} 
+}
 ```
-Save and exit Nano text editor.
+Save and exit the text editor.
 
 Restart docker to accept changes.
 
-`$ systemctl daemon-reload`
+`$ sudo systemctl daemon-reload`
 
-`$ systemctl start docker`
+`$ sudo systemctl stop docker`
 
-Check that docker is using the SSD.
+`$ sudo systemctl start docker`
+
+Use this command to check that docker is using the SSD.
 ```
-$ docker info | grep "Docker Root Dir:" 
+$ sudo docker info | grep "Docker Root Dir:" 
 > "data-root": "/mnt/usb/docker/"
 ```
-Try rebooting if you do not see your external SSD listed.
 
-`$ shutdown -r now`
+```
+Optional Reading - Install docker-compose - https://docs.docker.com/compose/install/
+Optional Reading - Install docker-compose using pip - https://docs.docker.com/compose/install/#install-using-pip
+```
 
-## 10. [DOJO] 
 
-Please verify bitcoind is not running. Will output an error if it is not running.
-
-`$ bitcoin-cli stop`
+## 10. [DOJO]
 
 Download and unzip latest Dojo release.
 ```
-$ cd ~
 $ curl -fsSL https://github.com/Samourai-Wallet/samourai-dojo/archive/master.zip -o master.zip
 $ unzip master.zip
 ```
@@ -404,7 +352,7 @@ Copy samourai-dojo-master directory contents to `dojo_dir` directory.
 
 Now remove all the old downloads that you used earlier in the guide.
 ```
-$ rm -rvf samourai-dojo-master/ master.zip SHA256SUMS.asc laanwj-releases.asc get-pip.py get-docker.sh
+$ rm -rvf samourai-dojo-master/ master.zip get-pip.py get-docker.sh
 ```
 Open bitcoin docker file in text editor. We are going to use the `aarch64-linux-gnu.tar.gz` source. Updates will happen so keep an eye out for new versions and update accordingly.
 
@@ -440,29 +388,43 @@ MYSQL_ROOT_PASSWORD = password protecting the root account of MySQL
 MYSQL_USER = login of the account used to access the database of your Dojo
 MYSQL_PASSWORD = password of the account used to access the database of your Dojo
 ```
-Using the terminal go to the `my-dojo/` directory.
-
-`$ cd ~/dojo_dir/docker/my-dojo`
-
-This directory contains a script named `dojo.sh` which will be your entrypoint for all operations related to the management of your Dojo.
-
-Docker and Docker Compose are going to build the images and containers of your Dojo. This operation will take a few minutes (download and setup of all required software components). After completion, your Dojo will be launched and will be ready for connection to your "external" bitcoin full node on your ODROID. 
+`$ nano docker-node.conf.tpl`
 ```
-$ cd ~/dojo_dir/docker/my-dojo
-$ ./dojo.sh install
+# Using nano edit docker-node.conf.tpl and provide a new value for the following parameters:
+NODE_API_KEY = API key which will be required from your Samourai Wallet / Sentinel for its interactions with the API of your Dojo
+NODE_ADMIN_KEY = API key which will be required from the maintenance tool for accessing a set of advanced features provided by the API of your Dojo
+NODE_JWT_SECRET = secret used by your Dojo for the initialization of a cryptographic key signing Json Web Tokens. These parameters will protect the access to your Dojo. Be sure to provide alphanumeric values with enough entropy
 ```
 
-When the install finished it will start showing logs. You can watch them for a little while if you'd like and then use `Ctrl + C` to exit. Dojo could take a few days to sync from this point, so we will go ahead and shut it down, and prepare to copy the blockchain data from your other computer.
+Using the terminal, go to the back to the `my-dojo/` directory.
 
-`$ ./dojo.sh stop`
+`$ cd ..`
+
+The directory `~/dojo_dir/docker/my-dojo` contains a script named `dojo.sh` which will be your entrypoint for all operations related to the management of your Dojo.
+
+Now it is time to begin the Dojo install. Docker and Docker Compose are going to build the images and containers of your Dojo. This operation will take a few minutes to download and setup of all required software components.
+```
+$ sudo ./dojo.sh install
+```
+
+When the install finishes it will start showing logs. Go ahead and pat yourself on the back, your Dojo is set up!
+
+Watch the logs for some time then use `Ctrl + C` to exit. If you do not wish to do step [11](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#11-scp), which copies the blockchain data over from a faster machine, skip ahead to the to part [12](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#12-finalize-dojo).
+
+Dojo could take a few days to sync from this point, so shut it down now if you wish to proceed with step [11](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#11-scp).
+
+`$ sudo ./dojo.sh stop`
+
 
 ## 11. [SCP]
 
-Right at the beginning we started downloading the Bitcoin mainnet blockchain on your other computer. Check the verification progress directly in Bitcoin Core on this computer. To proceed, it should be fully synced (see status bar).
+This part is optional, skip ahead to the to part [12](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#12-finalize-dojo) if you don't mind waiting.
 
-As soon as the verification is finished, shut down Bitcoin Core on Windows. We will now copy the data from your fully synced bitcoin node to the ODROID. This takes about 6 hours. Copy over the data from your fully synced node to `/mnt/usb/docker/volumes/my-dojo_data-bitcoind/_data/`. 
+At the beginning, you had the option of downloading the Bitcoin mainnet blockchain on a faster computer, and copying it to over. Check the verification progress directly in Bitcoin Core on this computer. To proceed, it should be fully synced, see the status bar.
 
-We are using “Secure Copy” (SCP), so download and install WinSCP, a free open-source program. Linux instructions are below.
+As soon as the verification is finished, shut down Bitcoin Core on Windows. We will now copy the data from your fully synced bitcoin node to the ODROID. This takes ~6 hours. Copy over the data from your fully synced node to `/mnt/usb/docker/volumes/my-dojo_data-bitcoind/_data/`. 
+
+We are using “Secure Copy” (SCP), so download and install WinSCP, a free open-source program. Mac and Linux instructions are below.
 
 With WinSCP, you can now connect to your ODROID by using its IP address.
 
@@ -478,65 +440,50 @@ Now Set ownership of `/mnt/usb/docker/volumes/my-dojo_data-bitcoind/_data/` and 
 # be sure to copy this entire command including the * at the end
 $ chown -R 1105:1108 /mnt/usb/docker/volumes/my-dojo_data-bitcoind/_data/*
 ```
- 
-For linux it would look something like the following.
-
-Go to `.bitcoin` directory on your linux machine, usually `/home/user/.bitcoin`.
-
-`$ cd  /home/user/.bitcoin`
-
-Copy the bitcoin data from this Linux machine to your ODROID. Here we are using `root@192.168.0.35` as and example. You need to put your ODROID local (internal) IP address here.
-
-`$ scp -r blocks/ root@192.168.0.35:~/.bitcoin/blocks`
-
-`$ scp -r chainstate/ root@192.168.0.35:~/.bitcoin/chainstate`
-
+For Linux or Mac check out @BTCxZelko's well written instructions [here](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Bitcoin-Blockchain-Transfer.md).
 ```
 Optional Reading: SCP on Linux - https://www.computerhope.com/unix/scp.htm
 Optional Reading: WinSCP Windows - https://winscp.net/eng/docs/start
 ```
 
+
 ## 12. [FINALIZE DOJO]
 
-Now that all the blockchain data has been copied over let's start dojo, check on some things, and get familiar with commands.
+Once your Dojo has done a full sync or the data has been copied over, let's check on some logs. Now is also a good time to get familiar with commands.
 
-`$ docker start`
+Start up if you need to.
+
+`$ sudo ./dojo.sh start` 
 
 Check that all containers are up. Begin to troubleshoot now if all containers do not show as up.
 
-`$ docker ps`
+`$ sudo docker ps`
 
-You can bring up the logs for all containers at any time by using this command.
+You can bring up the logs for all containers at any time by using this command. It can take some time as it attach to all containers and give output.
 
-`$ ./dojo.sh logs`
+`$ sudo ./dojo.sh logs`
 
-Monitor the progress made for the initialization of the database with this command. It is scanning your external bitcoind node. This will take about an hour to complete.
+Check on tracker.
 
-`$ ./dojo.sh logs tracker`
+`$ sudo ./dojo.sh logs tracker`
 
-Check that bitcoind is running properly. Among other infos the “verificationprogress” is shown. Once this value reaches almost 1 (0.999…), the blockchain is up-to-date and fully validated. Since `txindex=1` was specified in the `bitcoin.conf` file it will take an hour or more for bitcoin to build the transaction index.
+Check that bitcoind is running properly.
 
-Once you are sync'd up continue to step 11. 
-
-`$ ./dojo.sh logs bitcoind`
+`$ sudo ./dojo.sh logs bitcoind`
 
 Did Tor bootstrap 100%?
 
-` $ ./dojo.sh logs tor`
+` $ sudo ./dojo.sh logs tor`
 
-When the syncing of the database has completed retrieve the Tor onion addresses (v2 and v3) of the API of your Dojo.
+If everything looks ok, go ahead and retrieve the Tor onion addresses (v2 and v3) of the API of your Dojo.
 
-`$ ./dojo.sh onion`
+`$ sudo ./dojo.sh onion`
 
 A maintenance tool is accessible through your Tor browser at this onion address you have just obtained. Other than maintenance, this tool is what you will use to pair a Samourai Wallet on mobile to your Dojo on ODROID. The tool requires that you allow javascript for the site.
 
 A few lines ago you edited `docker-node.conf.tpl` entered a value for `NODE_ADMIN_KEY`. Go to the v3_address.onion (maintenance tool) and log in using the `NODE_ADMIN_KEY` value. Click the pairing tab and you will see a QR code for pairing. We will utilize in the next step where you will pair your Samourai Wallet with your Dojo.
 
-If everything is running smoothly, this is the perfect time to familiarize yourself with Bitcoin Core, try some bitcoin-cli commands, and do some reading or videos until the blockchain is up-to-date. A great point to start is the book Mastering Bitcoin by Andreas Antonopoulos which is open source. Now is also a great time to backup your system. 
-
-You can go ahead and close Bitcoin Core on your other machine and delete later on when you have a stable system with proper backups.
-
-Take some time to get familiar with Dojo commands and docs below as well.
+Take some time to get familiar with Dojo commands and docs below.
 
 ```
 # dojo command help
