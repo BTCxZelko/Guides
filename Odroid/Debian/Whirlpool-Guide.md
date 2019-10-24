@@ -1,7 +1,7 @@
 # Welcome to the Whirlpool Installation Guide
 This guide will allow you to set up the Whirlpool-client-cli, serving as a backend for continous mixing, even when you GUI is not running.
 
-## Prepare your Pi
+## Prepare your Odroid
    1. First install openjdk
 
 ```
