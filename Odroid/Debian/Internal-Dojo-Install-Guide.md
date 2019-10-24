@@ -5,19 +5,19 @@
 This is inspired by what is considered to be the "default dojo deployment". This setup is recommended to Samourai users who feel comfortable with a few command lines. More advanced users may find [this guide](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Advanced_Dojo_Setup.md) helpful for things like running external bitcoind. I have tried my best to give as much detail as possible for new users.
 
 # Table of Contents
-* [**HARDWARE REQUIREMENTS**](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#1-hardware-requirements) 
-* [**OPERATING SYSTEM**](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#2-operating-system)
-* [**BLOCKCHAIN DATA**](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#3-blockchain-data)
-* [**NETWORK**](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#4-network)
-* [**SSH SUDO AND ROOT**](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#5-ssh-sudo-and-root)
-* [**SYSTEM SETUP**](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#6-system-setup)
-* [**UFW**](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#7-ufw)
-* [**PIP**](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#8-pip)
-* [**DOCKER**](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#9-docker)
-* [**DOJO**](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#10-dojo)
-* [**SCP**](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#11-scp)
-* [**FINALIZE DOJO**](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#12-finalize-dojo)
-* [**PAIRING WALLET WITH DOJO**](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#13-pairing-wallet-with-dojo)
+* [**HARDWARE REQUIREMENTS**](https://github.com/BTCxZelko/Ronin-Dojo/edit/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#1-hardware-requirements) 
+* [**OPERATING SYSTEM**](https://github.com/BTCxZelko/Ronin-Dojo/edit/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#2-operating-system)
+* [**BLOCKCHAIN DATA**](https://github.com/BTCxZelko/Ronin-Dojo/edit/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#3-blockchain-data)
+* [**NETWORK**](https://github.com/BTCxZelko/Ronin-Dojo/edit/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#4-network)
+* [**SSH SUDO AND ROOT**](https://github.com/BTCxZelko/Ronin-Dojo/edit/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#5-ssh-sudo-and-root)
+* [**SYSTEM SETUP**](https://github.com/BTCxZelko/Ronin-Dojo/edit/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#6-system-setup)
+* [**UFW**](https://github.com/BTCxZelko/Ronin-Dojo/edit/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#7-ufw)
+* [**PIP**](https://github.com/BTCxZelko/Ronin-Dojo/edit/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#8-pip)
+* [**DOCKER**](https://github.com/BTCxZelko/Ronin-Dojo/edit/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#9-docker)
+* [**DOJO**](https://github.com/BTCxZelko/Ronin-Dojo/edit/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#10-dojo)
+* [**SCP**](https://github.com/BTCxZelko/Ronin-Dojo/edit/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#11-scp)
+* [**FINALIZE DOJO**](https://github.com/BTCxZelko/Ronin-Dojo/edit/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#12-finalize-dojo)
+* [**PAIRING WALLET WITH DOJO**](https://github.com/BTCxZelko/Ronin-Dojo/edit/master/Odroid/Debian/Internal-Dojo-Install-Guide.md#13-pairing-wallet-with-dojo)
 
 ```
 # My sources:
