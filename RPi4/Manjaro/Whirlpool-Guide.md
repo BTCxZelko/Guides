@@ -5,7 +5,7 @@ This guide will allow you to set up the Whirlpool-client-cli, serving as a backe
    1. First install openjdk
 
 ```
-sudo pacman -U http://mirror.archlinuxarm.org/aarch64/extra/jdk11-openjdk-11.0.4.u11-1-aarch64.pkg.tar.xz
+sudo pacman -S jdk11-openjdk
 ```
 
    2. Create a whirlpool directory and pull the latest whirlpool-client-cli file
