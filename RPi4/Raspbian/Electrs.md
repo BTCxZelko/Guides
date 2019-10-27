@@ -86,7 +86,7 @@ verbose = 4
 timestamp = true
 jsonrpc_import = true
 db_dir = "/mnt/usb/electrs/db"
-cookie = "$DOJO_RPC_USER:$DOJO_RPC_PASS"
+cookie = "DOJO_RPC_USER:DOJO_RPC_PASS" ## REPLACE with Your Dojo RPC Username and Password. 
 
 Ctrl+X, y, Enter
 ```
