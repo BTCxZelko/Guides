@@ -37,6 +37,7 @@ If you already have a NAS at home and don't want to buy another hard drive, ther
 Process:
 
 1. Stop the `bitcoind` daemon
+
    `$ systemctl stop bitcoind`
    
 2. Create a `bitcoin` volume in your NAS device (type: NFS) and share it to your local network. Create the folder `blocks` in that volume.
@@ -53,6 +54,7 @@ Process:
    $ mv ${HOME}/.bitcoin/blocks/* /mnt/bitcoin/blocks
    $ rmdir ${HOME}/.bitcoin/blocks
    ```
+
 5. Go to the configuration directory of bitcoind and substitute the `blocks` directory with the new `blocks` directory in the share: 
 
    ```
