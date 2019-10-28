@@ -30,43 +30,6 @@ However, if you are looking to run a node a budget, you can use external HDD's s
 You'll need a SD card to flash the OS of choice (we will cover Raspbian and Manjaro-ARM).
 For this we recommend: [Samsung EVO+ 64GB](https://www.amazon.com/Samsung-MicroSDXC-Memory-Adapter-MB-MC64GA/dp/B06XFWPXYD/ref=sr_1_4?keywords=EVO%2B+SD+card&qid=1571081610&s=electronics&sr=1-4). You'll need at least 16GB but for the price this is a great deal for a high quality SD card. 
 
-## NFS Shares
-
-If you already have a NAS at home and don't want to buy another hard drive, there is always the possibility of serving bitcoin blocks over the local network on an NFS shared storage. We are asuming your `bitcoind` installation is external to Dojo.
-
-Process:
-
-1. Stop the `bitcoind` daemon
-
-   `$ systemctl stop bitcoind`
-   
-2. Create a `bitcoin` volume in your NAS device (type: NFS) and share it to your local network. Create the folder `blocks` in that volume.
-
-3. Mount that external NFS storage in the device (Raspberry PI, Odroid, Intel NUC, etc.) where your bitcoind is running
-
-   ```
-   $ sudo echo "nas:/volume1/bitcoin	/mnt/bitcoin	nfs	nolock,rw,intr,_netdev,user,auto	0 0" >> /etc/fstab
-   $ mount /mnt/bitcoin
-   ```
-4. Move the already existing blocks in the $HOME directory to the new location and delete that blocks directory
-
-   ```
-   $ mv ${HOME}/.bitcoin/blocks/* /mnt/bitcoin/blocks
-   $ rmdir ${HOME}/.bitcoin/blocks
-   ```
-
-5. Go to the configuration directory of bitcoind and substitute the `blocks` directory with the new `blocks` directory in the share: 
-
-   ```
-   $ cd ${HOME}/.bitcoin`
-   $ ln -s /mnt/bitcoin/blocks blocks
-   ```
-6. Start the `bitcoind` daemon
-
-   ```
-   $ systemctl start bitcoind
-   ```
-
 ## Flashing Operating System
 This guide will cover [Raspbian](https://www.raspberrypi.org/downloads/raspbian/), [Manjaro Desktop GUI](https://osdn.net/projects/manjaro-arm/storage/rpi4/), and [Debian](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#1-hardware-requirements) Installations. Follow the links for more information and installation instructions.
 >For Manjaro-Arm: **NOTE**: The XFCE is the desktop version and Minimal is best for headless use. The XFCE version is resource heavy and will likely not be able to handle Dojo+Whirlpool+Electrs. For that option install Minimal [here](https://osdn.net/projects/manjaro-arm/storage/rpi4/minimal/19.10/)
