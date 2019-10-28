@@ -32,7 +32,9 @@ For this we recommend: [Samsung EVO+ 64GB](https://www.amazon.com/Samsung-MicroS
 
 ## NFS Shares
 
-[NFS Shares](https://github.com/jaimefoo/Ronin-Dojo/blob/master/NFS-Shares.md)
+If you already have a NAS at home and don't want to buy another hard drive, there is always the possibility of serving bitcoin blocks over the local network on an NFS shared storage. We are asuming your bitcoind installation is external to Dojo.
+
+[Procedure](https://github.com/jaimefoo/Ronin-Dojo/blob/master/NFS-Shares.md)
 
 ## Flashing Operating System
 This guide will cover [Raspbian](https://www.raspberrypi.org/downloads/raspbian/), [Manjaro Desktop GUI](https://osdn.net/projects/manjaro-arm/storage/rpi4/), and [Debian](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#1-hardware-requirements) Installations. Follow the links for more information and installation instructions.
