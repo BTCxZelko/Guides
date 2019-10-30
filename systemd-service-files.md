@@ -43,4 +43,4 @@ $ systemctl enable dojo.service
 $ systemctl start dojo.service
 ```
 
-From now on dojo should be started automatically with every system boot
+From now on dojo should be automatically started with every system boot
