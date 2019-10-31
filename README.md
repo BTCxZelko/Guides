@@ -5,6 +5,8 @@ Our Mission is to bring full on-chain self-sovereignity at an afforable price!
 
 > A Ronin was a samurai warrior in feudal Japan without a master or lord — known as a daimyo. A samurai could become a ronin in several different ways: his master might die or fall from power or the samurai might lose his master's favor or patronage and be cast off.
 
+> Miyamoto Musashi, also known as Shinmen Takezō, Miyamoto Bennosuke or, by his Buddhist name, Niten Dōraku, was a Japanese swordsman, philosopher, strategist, writer and rōnin. Musashi, as he was often simply known, became renowned through stories of his unique double-bladed swordsmanship and undefeated record in his 61 duels.
+
 Be Your own MASTER!
 
 # What is Samourai Dojo?
@@ -37,6 +39,8 @@ This guide will cover [Raspbian](https://www.raspberrypi.org/downloads/raspbian/
 ## Cases
 We strongly recommend getting a case that keeps the Pi or Odroid cool. 
 1. For RPi4: 
+   - For a Custom Samourai Wallet Ronin Dojo Case, we highly recommend CrytpoCloak! Comes with storage for Pi4 AND external storage device (check size requirements) [Check it out here](https://thecryptocloak.com/product/samourai/) 
+      - NOTE: WE DO NOT RECEIVE COMPENSATION FOR THEIR PRODUCT, but an awesome product at that. 
    - Either with active cooling cases such as:[Flirc](https://www.amazon.com/Flirc-Raspberry-Pi-Case-Silver/dp/B07WG4DW52/ref=sr_1_8?keywords=pi4+case&qid=1571082492&sr=8-8) 
    - Or a case with a fan such as [Miuzei](https://www.amazon.com/Miuzei-Raspberry-Cooling-Heat-Sinks-Supply/dp/B07TTN1M7G/ref=sr_1_5?crid=2FLR4GW4Y32PN&keywords=pi4%2Bcase%2Bwith%2Bfan&qid=1571082607&sprefix=pi4%2Bcase%2B%2Caps%2C222&sr=8-5&th=1) 
 
@@ -59,3 +63,16 @@ Once you have obtained your hardware and assembled it, you can choose from a few
      - Manjaro-ARM XFCE(coming)
    - Odriod
      - [Debian](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/Odroid/Debian/README.md#2-external-bitcoind-install-guide)
+
+# Contributors
+This list is continuously growing, I will do my best to update as much as I can. If you would like to contribute please feel free to pull or DM me to help!
+
+@GuerraMoneta @Burcakbaskan @bavarianledger @k3tan @pornaulait @crazyk03 @jaimefoo 
+
+@romanz - Electrs
+
+@openoms and @rootzoll - Raspiblitz team for inspiration and Electrs implementation. 
+
+If I missed you please let me know.
+
+## Shout out to Samoura Wallet team for making an amazing product!
