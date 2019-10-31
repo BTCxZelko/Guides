@@ -1,6 +1,8 @@
 # Welcome to the Whirlpool Installation Guide
 <sub>by @BTCxZelko</sub>
 
+Source: https://github.com/Samourai-Wallet/Whirlpool
+
 This guide will allow you to set up the Whirlpool-client-cli, serving as a backend for continous mixing, even when you GUI is not running.
 
 ## Prepare your Pi
