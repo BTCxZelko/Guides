@@ -1,4 +1,7 @@
 # Post initial OS installation
+<sub>by @BTCxZelko</sub>
+
+Source: https://github.com/Samourai-Wallet/samourai-dojo/blob/master/doc/DOCKER_setup.md
 
 >**NOTE: If you plan to run a step to include Whirlpool AND Electrs this is the set-up you should use**
 
