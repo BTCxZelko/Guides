@@ -1,4 +1,7 @@
 # Ronin Dojo Internal Install Guide
+<sub>by @burcakbaskan</sub>
+
+Source: https://github.com/Samourai-Wallet/samourai-dojo/blob/master/doc/DOCKER_setup.md
 
 ## 1. Format your external disk to "ext4" or "btrfs" and mount it
 
@@ -298,4 +301,5 @@ To                         Action      From
 
 If you are looking to get the most out of your New RONIN DOJO node visit the below sections: 
    - ELECTRS: connect your hardware devices to your own private server powered by your RONIN Dojo
+      > Currently unavailable for Raspbian - will update when available
    - [WHIRLPOOL](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/RPi4/Raspbian/Whirlpool-Guide.md): Run your own whirlpool-client-cli so you can keep your mixes going 24/7 
