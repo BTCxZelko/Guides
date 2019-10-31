@@ -67,7 +67,7 @@ Once you have obtained your hardware and assembled it, you can choose from a few
 # Contributors
 This list is continuously growing, I will do my best to update as much as I can. If you would like to contribute please feel free to pull or DM me to help!
 
-@GuerraMoneta @Burcakbaskan @bavarianledger @k3tan @pornaulait @crazyk03 @jaimefoo 
+@GuerraMoneta @Burcakbaskan @bavarianledger @k3tan @pornaulait @crazyk031 @jaimefoo 
 
 @romanz - Electrs
 
