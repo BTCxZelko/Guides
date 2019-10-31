@@ -15,7 +15,9 @@ As stated by the Samourai Team:
 
 This implementation connects to your wallet via Tor for increased privacy and allowing for connectivity anywhere without forwarding ports and exposing your home IP address.
 
-For more information on Samourai Wallet, Dojo, and Whirlpool visit the [Samourai Wallet Github](https://github.com/Samourai-Wallet).
+For more information on Samourai Wallet, Dojo, and Whirlpool visit the [Samourai Wallet Github](https://github.com/Samourai-Wallet). 
+
+For FAQ's about all things Samourai Wallet, check out @PuraVida's [FAQ wiki](https://github.com/PuraVlda/samourai-wallet-android/wiki/Frequently-Asked-Questions)
 
 ## Recommended Hardware
 The Full Dojo installation, which includes a fresh sync of the Bitcoin blockchain, requires a little over 3GB of RAM during the initial sync. Then it drops to a little less than 2GB after sync is complete. Thusly we recommend: [Odroid N2](https://www.hardkernel.com/shop/odroid-n2-with-4gbyte-ram/) or the [Raspberry Pi4](https://www.canakit.com/raspberry-pi-4-4gb.html?cid=usd&src=raspberrypi). 
