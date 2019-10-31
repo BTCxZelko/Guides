@@ -1,4 +1,5 @@
 # Electrs - an Electrum Personal Server
+<sub>by @BTCxZelko</sub>
 
 Electrs is an Electrum Personal Server that is written in a code name called Rust. This implementation allows you to completely power your own Electrum Desktop Wallet using your Dojo Node, using only about 50GB of data (ElectrumX a similar program utilizes about 4x that).
 
@@ -162,7 +163,6 @@ Now that Electrum is downloaded on your host device we are going to set it up to
 
 # 10. Set up One Server Settings.
 
-```
 Once Electrum is downloaded it is important to make sure you are in the right env and PATH so the commands work properly:
 
 ```
