@@ -1,4 +1,7 @@
 # Post initial OS installation
+<sub>by @BTCxZelko</sub>
+
+Source: https://github.com/Samourai-Wallet/samourai-dojo/blob/master/doc/DOCKER_setup.md
 
 >**WARNING: If you plan to run a step to include Whirlpool AND Electrs you should head to the Minimal Set-up. XFCE is Resource heavy and the RAM quickly runs out. If you don't plan on running Electrs then feel free to proceed.**
 
