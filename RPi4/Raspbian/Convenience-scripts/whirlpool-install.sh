@@ -7,7 +7,7 @@ NC='\033[0m'
 
 echo -e "${YELLOW}"
 echo "***"
-echo "Welcome to Ronin Dojo Whirlpool Install"
+echo "Welcome to Ronin Dojo - Whirlpool Install"
 echo "By @BTCxZelko"
 echo "***"
 sleep 3s
@@ -63,16 +63,6 @@ echo "***"
 echo "Download complete"
 sleep 3s
 
-# create whirlpool tmux session
-#echo -e "${CYAN}" 
-#echo "***"
-#echo "Opening tmux session"
-#echo "***"
-#echo -e "${NC}"
-#sleep 1s
-#tmux new -s whirlpool
-#sleep 3s
-
 # initate Whirlpool
 echo -e "${CYAN}" 
 echo "***"
@@ -83,20 +73,29 @@ sleep 1s
 java -jar whirlpool-client-cli-0.9.1-run.jar --init --tor
 sleep 3s
 
-# start Whirlpool
-echo -e "${CYAN}" 
+# create whirlpool tmux session and start Whirlpool
+echo -e "${CYAN}"
 echo "***"
-echo "Starting Whirlpool...Be prepared to enter Mobile Wallet passphrase"
+echo "Opening tmux session and Start Whirlpool"
 echo "***"
 echo -e "${NC}"
 sleep 1s
-java -jar whirlpool-client-cli-0.9.1-run.jar --server=mainnet --tor --auto-mix --authenticate --mixs-target=0 --listen
-sleep 3s
-
-# close Whirlpool tmux session
-echo -e "${CYAN}" 
+tmux new -s whirlpool -d
+sleep 1s
+tmux send-keys -t 'whirlpool' "java -jar whirlpool-client-cli-0.9.1-run.jar --server=mainnet --tor --auto-mix --authenticate --mixs-target=0 --listen" ENTER
+sleep 5s
+echo -e "${YELLOW}"
 echo "***"
-echo "Detach from tmux Whirlpool Session..."
-each "***"
-echo "press Ctrl+b, d"
-echo "see guide for GUI pairing at https://github.com/BTCxZelko/Ronin-Dojo/blob/master/RPi4/Raspbian/Whirlpool-Guide.md"
+echo "Entering tmux Whirlpool Session"
+sleep 3s
+echo -e "${YELLOW}"
+echo "Type in your Wallet Passphrase when prompted"
+sleep 3s
+echo -e "${YELLOW}"
+echo "***"
+echo "After you see it running you can close by pressing the following:"
+echo "Ctrl+b then d"
+echo "***"
+echo "For pairing with GUI head to full guide at https://github.com/BTCxZelko/Ronin-Dojo/blob/master/RPi4/Raspbian/Whirlpool-Guide.md#pairing-your-with-the-whirlpool-gui"
+sleep 15s
+tmux a -t 'whirlpool'
