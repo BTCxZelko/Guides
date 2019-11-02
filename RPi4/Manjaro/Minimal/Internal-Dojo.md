@@ -257,3 +257,20 @@ To                         Action      From
 If you are looking to get the most out of your New RONIN DOJO node visit the below sections: 
    - ELECTRS: connect your hardware devices to your own private server powered by your RONIN Dojo
    - [WHIRLPOOL](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/RPi4/Manjaro/Whirlpool-Guide.md): Run your own whirlpool-client-cli so you can keep your mixes going 24/7 
+
+## Support
+
+If you appreciate our work and wish to support our continued efforts in providing free, unencumbered, open source code that enhances your sovereignty please consider a donation.
+
+### Address
+
+3MbsfzyXG1xeojmH5jju8XRePdfZLu6gwa
+
+[![address](http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=bc1qma3vyljvz0n3n0e7czaewx8tq5heugv2kvrcq2&qzone=1&margin=0&size=200x200&ecc=L)](https://oxt.me/address/3MbsfzyXG1xeojmH5jju8XRePdfZLu6gwa)
+
+### PayNym (BIP47)
+
++supersnowflake4DD
+PM8TJgV7iwMBnEUEQemstA74aXas17M5uF4JvN1Q36SknCqSxgs6VHMb6ftGcKh2Xrb6kppJvzjSqDtwWRSAkn7v6YejN8D4Fi1jk6nBsCDRqSQrWkD5 
+
+[![BIP47 payment code](http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=PM8TJgV7iwMBnEUEQemstA74aXas17M5uF4JvN1Q36SknCqSxgs6VHMb6ftGcKh2Xrb6kppJvzjSqDtwWRSAkn7v6YejN8D4Fi1jk6nBsCDRqSQrWkD5&qzone=1&margin=0&size=200x200&ecc=L)](https://paynym.is/+supersnowflake4DD)
