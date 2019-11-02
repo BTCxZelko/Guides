@@ -25,7 +25,11 @@ echo "Installing Whirlpool Dependencies"
 echo "***"
 echo -e "${NC}"
 sleep 3s
-sudo apt-get install openjdk-8-jre
+sudo apt-get install openjdk-8-jre -y
+echo -e "${CYAN}"
+echo "***"
+echo "Download complete"
+echo "***"
 sleep 5s
 
 # install instal openjdk
@@ -35,7 +39,11 @@ echo "Installing tmux"
 echo "***"
 echo -e "${NC}"
 sleep 3s
-sudo apt-get install tmux
+sudo apt-get install tmux -y
+echo -e "${CYAN}"
+echo "***"
+echo "Download complete"
+echo "***"
 sleep 5s
 
 # create whirlpool directory
@@ -46,8 +54,12 @@ echo "***"
 echo -e "${NC}"
 sleep 1s
 cd $HOME
-#mkdir whirlpool
+mkdir whirlpool
 cd whirlpool
+echo -e "${CYAN}"
+echo "***"
+echo "Done"
+echo "***"
 sleep 3s
 
 # pull Whirlpool run times
