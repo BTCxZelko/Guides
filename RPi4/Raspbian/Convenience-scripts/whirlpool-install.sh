@@ -97,5 +97,5 @@ echo "After you see it running you can close by pressing the following:"
 echo "Ctrl+b then d"
 echo "***"
 echo "For pairing with GUI head to full guide at https://github.com/BTCxZelko/Ronin-Dojo/blob/master/RPi4/Raspbian/Whirlpool-Guide.md#pairing-your-with-the-whirlpool-gui"
-sleep 15s
+sleep 5s
 tmux a -t 'whirlpool'
