@@ -73,6 +73,7 @@ wget https://github.com/Samourai-Wallet/whirlpool-runtimes/releases/download/cli
 echo -e "${CYAN}"
 echo "***"
 echo "Download complete"
+echo "***"
 sleep 3s
 
 # initate Whirlpool
@@ -83,6 +84,10 @@ echo "***"
 echo -e "${NC}"
 sleep 1s
 java -jar whirlpool-client-cli-0.9.1-run.jar --init --tor
+echo -e "${CYAN}"
+echo "***"
+echo "Initation complete"
+echo "***"
 sleep 3s
 
 # create whirlpool tmux session and start Whirlpool
