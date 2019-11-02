@@ -1,5 +1,5 @@
 ## NFS Shares
-<subpar> By Jaimefoo
+<sub> By Jaimefoo
 
 If you already have a NAS at home and don't want to buy another hard drive, there is always the possibility of serving bitcoin blocks over the local network on an NFS shared storage. We are asuming your `bitcoind` installation is external to Dojo.
 
