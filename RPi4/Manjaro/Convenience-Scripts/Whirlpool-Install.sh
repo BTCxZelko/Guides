@@ -14,7 +14,7 @@ sleep 3s
 echo -e "${CYAN}"
 echo "***"
 echo "Install and run Whirlpool Client CLI for continuous mixing"
-echo "Intended for Raspberry Pi 4-4GB RAM + Raspbian"
+echo "Intended for Raspberry Pi 4-4GB RAM + Manjaro-Arm"
 echo "***"
 sleep 5s
 
@@ -26,6 +26,10 @@ echo "***"
 echo -e "${NC}"
 sleep 1s
 sudo pacman -S jdk11-openjdk
+echo -e "${CYAN}"
+echo "***"
+echo "Download complete"
+echo "***"
 sleep 3s
 
 # install install tmux
@@ -36,6 +40,10 @@ echo "***"
 echo -e "${NC}"
 sleep 1s
 sudo pacman -S tmux -y
+echo -e "${CYAN}"
+echo "***"
+echo "Download complete"
+echo "***"
 sleep 3s
 
 # Create Whirlpool Directory
