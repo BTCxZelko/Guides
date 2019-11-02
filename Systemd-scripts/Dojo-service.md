@@ -15,8 +15,10 @@ cd ${HOME}/dojo/docker/my-dojo/
 Once we have our little script we can create the service script in /etc/systemd/system:
 
 ```
-/etc/systemd/system/dojo.service:
+nano /etc/systemd/system/dojo.service
 
+## Copy and Paste the following:
+---------------------
 [Unit]
 Description=Samourai Dojo
 After=bitcoind.service
@@ -38,3 +40,10 @@ WantedBy=multi-user.target
 ```
 
 Let's enable and start our service:
+
+```
+systemctl enable dojo.service
+systemctl start dojo.service
+```
+
+From now on dojo should be automatically started with every system boot
