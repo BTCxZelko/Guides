@@ -98,9 +98,9 @@ echo "***"
 echo -e "${NC}"
 sleep 1s
 sed -i '56d' /etc/tor/torrc
-sed -i '56i ControlPort 9051' /home/mzelkoski/torrc-test
+sed -i '56i ControlPort 9051' /etc/tor/torrc
 sed -i '60d' /etc/tor/torrc
-sed -i '60i CookieAuthentication 1' /home/mzelkoski/torrc-test
+sed -i '60i CookieAuthentication 1' /etc/tor/torrc
 sed -i '61i #CookieAuthFileGroupReadable 1' /etc/tor/torrc
 echo -e "${CYAN}"
 echo "***"
