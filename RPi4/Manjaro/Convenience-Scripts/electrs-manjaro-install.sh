@@ -52,7 +52,8 @@ echo "Creating new user for Electrs"
 echo "***"
 echo -e "${NC}"
 sleep 1s
-sudo useradd -m -p electrs electrs
+sudo useradd -m electrs electrs
+sudo usermod -aG wheel electrs
 echo "***"
 echo "Done"
 echo "***"
@@ -66,10 +67,11 @@ echo "***"
 echo -e "${NC}"
 sleep 1s
 cd $HOME
-sudo -u electrs pacman -S rustup -y
-sudo -u electrs rustup install stable
-sudo -u electrs rustup default stable
-sudo -u electrs pacman -S clang -y
+sudo pacman -S rustup -y
+sudo -u electrs rustup toolchain install nightly-2018-12-27
+sudo -u electrs cargo +nightly-2018-12-27 build
+sudo rustup default stable
+sudo pacman -S clang -y
 sleep 1s
 echo "***"
 echo "Installation Complete"
@@ -85,7 +87,9 @@ echo -e "${NC}"
 sleep 1s
 sudo mkdir /mnt/usb/electrs
 sudo mkdir /mnt/usb/electrs/db
-sudo chown -R electrs:electrs /mnt/usb/electrs
+sudo chown -R electrs:electrs /mnt/usb/electrs/
+sudo chmod 755 /mnt/usb/electrs/
+sudo chmod 755 /home/electrs/
 echo -e "${CYAN}"
 echo "***"
 echo "Done"
@@ -98,10 +102,9 @@ echo "Installing Electrs...this may take some time"
 echo "***"
 echo -e "${NC}"
 sleep 1s
-cd /home/electrs/
-sudo su -u electrs git clone https://github.com/romanz/electrs
-cd electrs
-sudo su -u electrs cargo build --release
+sudo -u electrs git clone https://github.com/romanz/electrs /home/electrs/electrs
+cd /home/electrs/electrs
+sudo -u electrs cargo build --release
 echo -e "${CYAN}"
 echo "***"
 echo "Installation complete"
@@ -117,7 +120,7 @@ sleep 1s
 RPC_USER=$(sudo cat ~/dojo/docker/my-dojo/conf/docker-bitcoind.conf | grep BITCOIND_RPC_USER= | cut -c 19-)
 RPC_PASS=$(sudo cat ~/dojo/docker/my-dojo/conf/docker-bitcoind.conf | grep BITCOIND_RPC_PASSWORD= | cut -c 23-)
 sudo -u electrs mkdir /home/electrs/.electrs
-sudo -u electrs nano /home/electrs/.electrs/config.toml
+sudo -u electrs touch /home/electrs/.electrs/config.toml
 sed -i '1i verbose = 4'
 sed -i '2i timestamp = true'
 sed -i '3i jsponrpc_import = true'
