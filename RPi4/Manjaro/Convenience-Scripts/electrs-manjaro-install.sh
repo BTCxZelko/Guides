@@ -157,3 +157,12 @@ echo "***"
 echo "Electrs is officially running!"
 sleep 5s
 echo "See the full guide at https://github.com/BTCxZelko/Ronin-Dojo/blob/master/RPi4/Manjaro/Minimal/Electrs.md"
+
+echo -e "${CYAN}"
+echo "***"
+echo "Exiting now"
+echo "***"
+echo -e "${NC}"
+sleep 3s
+
+fi
