@@ -102,6 +102,7 @@ sed -i '56i ControlPort 9051' /etc/tor/torrc
 sed -i '60d' /etc/tor/torrc
 sed -i '60i CookieAuthentication 1' /etc/tor/torrc
 sed -i '61i #CookieAuthFileGroupReadable 1' /etc/tor/torrc
+sudo systemctl restart tor
 echo -e "${CYAN}"
 echo "***"
 echo "Edit complete"
