@@ -101,7 +101,7 @@ sed -i '56d' /etc/tor/torrc
 sed -i '56i ControlPort 9051' /etc/tor/torrc
 sed -i '60d' /etc/tor/torrc
 sed -i '60i CookieAuthentication 1' /etc/tor/torrc
-sed -i '61i #CookieAuthFileGroupReadable 1' /etc/tor/torrc
+sed -i '61i CookieAuthFileGroupReadable 1' /etc/tor/torrc
 sudo systemctl restart tor
 echo -e "${CYAN}"
 echo "***"
@@ -116,7 +116,7 @@ echo "Initating Whirlpool...Be prepared to paste Whirlpool Pairing Code from Mob
 echo "***"
 echo -e "${NC}"
 sleep 1s
-java -jar whirlpool-client-cli-0.9.1-run.jar --init --tor
+java -jar whirlpool-client-cli-0.9.1-run.jar --init --tor=/usr/bin/tor
 echo "***"
 echo "Initiation complete"
 echo "***"
@@ -129,6 +129,7 @@ echo "Opening Tmux session and Start Whirlpool"
 echo "***"
 echo -e "${NC}"
 sleep 1s
+sed -i '31i cli.torConfig.executable = /usr/bin/tor' ~/whirlpool/whirlpool-cli-config.properties
 tmux new -s whirlpool -d
 sleep 1s
 tmux send-keys -t 'whirlpool' "java -jar whirlpool-client-cli-0.9.1-run.jar --server=mainnet --tor --auto-mix --authenticate --mixs-target=0 --listen" ENTER
