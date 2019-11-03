@@ -26,7 +26,7 @@ echo "***"
 echo -e "${NC}"
 sleep 1s
 sed -i '64d' 
-sed -i '64i BITCOIND_RPC_EXTERNAL=on' dojo/docker/my-dojo/conf/docker-bitcoind.conf
+sed -i '64i BITCOIND_RPC_EXTERNAL=on' ~/dojo/docker/my-dojo/conf/docker-bitcoind.conf
 sleep 2s
 echo -e "${CYAN}" 
 echo "***"
@@ -42,7 +42,7 @@ echo -e "${NC}"
 sleep 1s
 cd $HOME
 cd dojo/docker/my-dojo
-sudo ./dojo.sh
+sudo ./dojo.sh restart
 sleep 3s
 
 # Create Electrs User
@@ -121,8 +121,8 @@ sudo -u electrs nano /home/electrs/.electrs/config.toml
 sed -i '1i verbose = 4'
 sed -i '2i timestamp = true'
 sed -i '3i jsponrpc_import = true'
-sed -i '4i db_dir = "/mnt/usb/electrs/db"
-cookie = "$RPC_USER:$RPC_PASS"
+sed -i '4i db_dir = "/mnt/usb/electrs/db"'
+sed -i '5i cookie = "$RPC_USER:$RPC_PASS"'
 sleep 3s
 
 # edit torrc
@@ -135,6 +135,7 @@ sleep 1s
 sed -i '87i HiddenServiceDir /var/lib/tor/hidden_service/electrs' /etc/tor/torrc
 sed -i '88i HiddenServiceVersion 3' /etc/tor/torrc
 sed -i '89i HiddenServicePort 50001 127.0.0.1:50001' /etc/tor/torrc
+sudo systemctl restart tor
 echo -e "${CYAN}"
 echo "***"
 echo "Edit complete"
