@@ -114,8 +114,8 @@ echo "Edit the Electrs config.toml"
 echo "***"
 echo -e "${NC}"
 sleep 1s
-RPC_USER=$(sudo cat /mnt/ssd/dojo/docker/my-dojo/conf/docker-bitcoind.conf | grep BITCOIND_RPC_USER= | cut -c 19-)
-RPC_PASS=$(sudo cat /mnt/ssd/dojo/docker/my-dojo/conf/docker-bitcoind.conf | grep BITCOIND_RPC_PASSWORD= | cut -c 23-)
+RPC_USER=$(sudo cat ~/dojo/docker/my-dojo/conf/docker-bitcoind.conf | grep BITCOIND_RPC_USER= | cut -c 19-)
+RPC_PASS=$(sudo cat ~/dojo/docker/my-dojo/conf/docker-bitcoind.conf | grep BITCOIND_RPC_PASSWORD= | cut -c 23-)
 sudo -u electrs mkdir /home/electrs/.electrs
 sudo -u electrs nano /home/electrs/.electrs/config.toml
 sed -i '1i verbose = 4'
