@@ -129,7 +129,7 @@ echo "Opening Tmux session and Start Whirlpool"
 echo "***"
 echo -e "${NC}"
 sleep 1s
-sed -i '31i cli.torConfig.executable = /usr/bin/tor' ~/whirlpool/whirlpool-cli-config.properties
+sed -i '31i cli.torConfig.executable=/usr/bin/tor' ~/whirlpool/whirlpool-cli-config.properties
 tmux new -s whirlpool -d
 sleep 1s
 tmux send-keys -t 'whirlpool' "java -jar whirlpool-client-cli-0.9.1-run.jar --server=mainnet --tor --auto-mix --authenticate --mixs-target=0 --listen" ENTER
