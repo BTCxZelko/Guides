@@ -45,20 +45,6 @@ cd dojo/docker/my-dojo
 sudo ./dojo.sh restart
 sleep 3s
 
-# Create Electrs User
-echo -e "${CYAN}"
-echo "***"
-echo "Creating new user for Electrs"
-echo "***"
-echo -e "${NC}"
-sleep 1s
-sudo useradd -m electrs electrs
-sudo usermod -aG wheel electrs
-echo "***"
-echo "Done"
-echo "***"
-sleep 3s
-
 # Install Rust and Clang
 echo -e "${CYAN}" 
 echo "***"
@@ -68,9 +54,8 @@ echo -e "${NC}"
 sleep 1s
 cd $HOME
 sudo pacman -S rustup -y
-sudo -u electrs rustup toolchain install nightly-2018-12-27
-sudo -u electrs cargo +nightly-2018-12-27 build
-sudo rustup default stable
+rustup toolchain install nightly-2018-12-27
+cargo +nightly-2018-12-27 build
 sudo pacman -S clang -y
 sleep 1s
 echo "***"
@@ -85,11 +70,12 @@ echo "Creating Database location for Electrs"
 echo "***"
 echo -e "${NC}"
 sleep 1s
+List usernames
+USER=${NONROOTUSER}
 sudo mkdir /mnt/usb/electrs
 sudo mkdir /mnt/usb/electrs/db
-sudo chown -R electrs:electrs /mnt/usb/electrs/
+sudo chown -R $USER:$USER /mnt/usb/electrs/
 sudo chmod 755 /mnt/usb/electrs/
-sudo chmod 755 /home/electrs/
 echo -e "${CYAN}"
 echo "***"
 echo "Done"
@@ -102,9 +88,9 @@ echo "Installing Electrs...this may take some time"
 echo "***"
 echo -e "${NC}"
 sleep 1s
-sudo -u electrs git clone https://github.com/romanz/electrs /home/electrs/electrs
-cd /home/electrs/electrs
-sudo -u electrs cargo build --release
+git clone https://github.com/romanz/electrs /home/$USER/electrs
+cd /home/$USER/electrs
+cargo build --release
 echo -e "${CYAN}"
 echo "***"
 echo "Installation complete"
@@ -119,8 +105,8 @@ echo -e "${NC}"
 sleep 1s
 RPC_USER=$(sudo cat ~/dojo/docker/my-dojo/conf/docker-bitcoind.conf | grep BITCOIND_RPC_USER= | cut -c 19-)
 RPC_PASS=$(sudo cat ~/dojo/docker/my-dojo/conf/docker-bitcoind.conf | grep BITCOIND_RPC_PASSWORD= | cut -c 23-)
-sudo -u electrs mkdir /home/electrs/.electrs
-sudo -u electrs touch /home/electrs/.electrs/config.toml
+mkdir /home/$USER/electrs/.electrs
+touch /home/$USER/electrs/.electrs/config.toml
 sed -i '1i verbose = 4'
 sed -i '2i timestamp = true'
 sed -i '3i jsponrpc_import = true'
@@ -153,10 +139,10 @@ echo -e "${NC}"
 sleep 1s
 tmux new -s electrs -d
 sleep 1s
-cd /home/electrs/electrs
-tmux send-keys -t 'electrs' "sudo su -u electrs cargo run --release -- -vvv --timestamp  --index-batch-size=100 --db-dir /mnt/usb/electrs/db --electrum-rpc-addr="0.0.0.0:50001" --daemon-rpc-addr="127.0.0.1:28256""
+cd /home/$USER/electrs
+tmux send-keys -t 'electrs' "cargo run --release -- -vvv --timestamp  --index-batch-size=100 --db-dir /mnt/usb/electrs/db --electrum-rpc-addr="0.0.0.0:50001" --daemon-rpc-addr="127.0.0.1:28256""
 sleep 5s
-echo -e "${YELLOW}"
+echo -e "${YELLOW}
 echo "***"
 echo "Electrs is officially running!"
 sleep 5s
@@ -169,4 +155,4 @@ echo "***"
 echo -e "${NC}"
 sleep 3s
 
-fi
+
