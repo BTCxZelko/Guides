@@ -70,12 +70,12 @@ echo "Creating Database location for Electrs"
 echo "***"
 echo -e "${NC}"
 sleep 1s
-List usernames
-USER=${NONROOTUSER}
+USER=$(sudo cat /etc/passwd | grep 1000 | awk -F: '{ print $1}' | cut -c 1-)
 sudo mkdir /mnt/usb/electrs
 sudo mkdir /mnt/usb/electrs/db
 sudo chown -R $USER:$USER /mnt/usb/electrs/
 sudo chmod 755 /mnt/usb/electrs/
+sudo chmod 755 /mnt/usb/electrs/db
 echo -e "${CYAN}"
 echo "***"
 echo "Done"
@@ -107,11 +107,11 @@ RPC_USER=$(sudo cat ~/dojo/docker/my-dojo/conf/docker-bitcoind.conf | grep BITCO
 RPC_PASS=$(sudo cat ~/dojo/docker/my-dojo/conf/docker-bitcoind.conf | grep BITCOIND_RPC_PASSWORD= | cut -c 23-)
 mkdir /home/$USER/electrs/.electrs
 touch /home/$USER/electrs/.electrs/config.toml
-sed -i '1i verbose = 4'
-sed -i '2i timestamp = true'
-sed -i '3i jsponrpc_import = true'
-sed -i '4i db_dir = "/mnt/usb/electrs/db"'
-sed -i '5i cookie = "$RPC_USER:$RPC_PASS"'
+sed -i '1i verbose = 4' /home/$USER/electrs/.electrs/config.toml
+sed -i '2i timestamp = true' /home/$USER/electrs/.electrs/config.toml
+sed -i '3i jsponrpc_import = true' /home/$USER/electrs/.electrs/config.toml
+sed -i '4i db_dir = "/mnt/usb/electrs/db"' /home/$USER/electrs/.electrs/config.toml
+sed -i '5i cookie = "$RPC_USER:$RPC_PASS"' /home/$USER/electrs/.electrs/config.toml
 sleep 3s
 
 # edit torrc
@@ -121,6 +121,7 @@ echo "Editting torrc..."
 echo "***"
 echo -e "${NC}"
 sleep 1s
+sudo chown -R $USER:$USER /etc/tor/*
 sed -i '87i HiddenServiceDir /var/lib/tor/hidden_service/electrs' /etc/tor/torrc
 sed -i '88i HiddenServiceVersion 3' /etc/tor/torrc
 sed -i '89i HiddenServicePort 50001 127.0.0.1:50001' /etc/tor/torrc
@@ -147,12 +148,10 @@ echo "***"
 echo "Electrs is officially running!"
 sleep 5s
 echo "See the full guide at https://github.com/BTCxZelko/Ronin-Dojo/blob/master/RPi4/Manjaro/Minimal/Electrs.md"
-
+sleep 10s
 echo -e "${CYAN}"
 echo "***"
 echo "Exiting now"
 echo "***"
 echo -e "${NC}"
 sleep 3s
-
-
