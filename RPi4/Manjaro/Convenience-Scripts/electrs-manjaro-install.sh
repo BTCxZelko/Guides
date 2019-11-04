@@ -53,9 +53,7 @@ echo "***"
 echo -e "${NC}"
 sleep 1s
 cd $HOME
-sudo pacman -S rustup -y
-rustup toolchain install nightly-2018-12-27
-cargo +nightly-2018-12-27 build
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 sudo pacman -S clang -y
 sleep 1s
 echo "***"
