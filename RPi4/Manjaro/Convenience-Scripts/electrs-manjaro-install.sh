@@ -5,6 +5,7 @@ CYAN='\033[0;36m'
 NC='\033[0m'
 # No Color
 
+
 echo -e "${YELLOW}"
 echo "***"
 echo "Welcome to Ronin Dojo - Electrs Install"
@@ -52,8 +53,12 @@ echo "Installing Rust and Clang for Electrs"
 echo "***"
 echo -e "${NC}"
 sleep 1s
+USER=$(sudo cat /etc/passwd | grep 1000 | awk -F: '{ print $1}' | cut -c 1-)
 cd $HOME
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+source $HOME/.cargo/env
+rustup install 1.37.0 --force
+rustup override set 1.37.0
 sudo pacman -S clang -y
 sleep 1s
 echo "***"
@@ -68,7 +73,6 @@ echo "Creating Database location for Electrs"
 echo "***"
 echo -e "${NC}"
 sleep 1s
-USER=$(sudo cat /etc/passwd | grep 1000 | awk -F: '{ print $1}' | cut -c 1-)
 sudo mkdir /mnt/usb/electrs
 sudo mkdir /mnt/usb/electrs/db
 sudo chown -R $USER:$USER /mnt/usb/electrs/
@@ -101,15 +105,19 @@ echo "Edit the Electrs config.toml"
 echo "***"
 echo -e "${NC}"
 sleep 1s
-RPC_USER=$(sudo cat ~/dojo/docker/my-dojo/conf/docker-bitcoind.conf | grep BITCOIND_RPC_USER= | cut -c 19-)
-RPC_PASS=$(sudo cat ~/dojo/docker/my-dojo/conf/docker-bitcoind.conf | grep BITCOIND_RPC_PASSWORD= | cut -c 23-)
-mkdir /home/$USER/electrs/.electrs
-touch /home/$USER/electrs/.electrs/config.toml
-sed -i '1i verbose = 4' /home/$USER/electrs/.electrs/config.toml
-sed -i '2i timestamp = true' /home/$USER/electrs/.electrs/config.toml
-sed -i '3i jsponrpc_import = true' /home/$USER/electrs/.electrs/config.toml
-sed -i '4i db_dir = "/mnt/usb/electrs/db"' /home/$USER/electrs/.electrs/config.toml
-sed -i '5i cookie = "$RPC_USER:$RPC_PASS"' /home/$USER/electrs/.electrs/config.toml
+RPC_USER=$(sudo cat /home/$USER/dojo/docker/my-dojo/conf/docker-bitcoind.conf | grep BITCOIND_RPC_USER= | cut -c 19-)
+RPC_PASS=$(sudo cat /home/$USER/dojo/docker/my-dojo/conf/docker-bitcoind.conf | grep BITCOIND_RPC_PASSWORD= | cut -c 23-)
+mkdir /home/$USER/.electrs
+touch /home/$USER/config.toml
+chmod 600 /home/$USER/config.toml || exit 1 
+cat > /home/$USER/config.toml <<EOF
+verbose = 4
+timestamp = true
+jsonrpc_import = true
+db_dir = "/mnt/usb/electrs/db"
+cookie = "$RPC_USER:$RPC_PASS"
+EOF
+sudo mv /home/$USER/config.toml /home/$USER/.electrs/config.toml
 sleep 3s
 
 # edit torrc
@@ -119,10 +127,10 @@ echo "Editting torrc..."
 echo "***"
 echo -e "${NC}"
 sleep 1s
-sudo chown -R $USER:$USER /etc/tor/*
-sed -i '87i HiddenServiceDir /var/lib/tor/hidden_service/electrs' /etc/tor/torrc
-sed -i '88i HiddenServiceVersion 3' /etc/tor/torrc
-sed -i '89i HiddenServicePort 50001 127.0.0.1:50001' /etc/tor/torrc
+####EDIT THE LINE NUMBERS
+sudo sed -i '78i HiddenServiceDir /var/lib/tor/hidden_service/electrs' /etc/tor/torrc
+sudo sed -i '79i HiddenServiceVersion 3' /etc/tor/torrc
+sudo sed -i '80i HiddenServicePort 50001 127.0.0.1:50001' /etc/tor/torrc
 sudo systemctl restart tor
 echo -e "${CYAN}"
 echo "***"
@@ -136,14 +144,14 @@ echo "Starting up Electrs..."
 echo "***"
 echo -e "${NC}"
 sleep 1s
-tmux new -s electrs -d
-sleep 1s
 cd /home/$USER/electrs
-tmux send-keys -t 'electrs' "cargo run --release -- -vvv --timestamp  --index-batch-size=100 --db-dir /mnt/usb/electrs/db --electrum-rpc-addr="0.0.0.0:50001" --daemon-rpc-addr="127.0.0.1:28256""
+sleep 1s
+tmux new -s electrs -d
+tmux send-keys -t 'electrs' "cargo run --release -- -vvv --timestamp  --index-batch-size=100 --db-dir /mnt/usb/electrs/db --electrum-rpc-addr="0.0.0.0:50001" --daemon-rpc-addr="127.0.0.1:28256"" ENTER
 sleep 5s
 echo -e "${YELLOW}
 echo "***"
-echo "Electrs is officially running!"
+echo "Electrs is indexing the blockchain...after index is complete you can connect your Electrum Wallet to it"
 sleep 5s
 echo "See the full guide at https://github.com/BTCxZelko/Ronin-Dojo/blob/master/RPi4/Manjaro/Minimal/Electrs.md"
 sleep 10s
