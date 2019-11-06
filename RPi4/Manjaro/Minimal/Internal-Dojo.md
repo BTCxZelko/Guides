@@ -67,6 +67,14 @@ First create the docker directory where we will store all docker data
 ```
 sudo mkdir /mnt/usb/docker
 ```
+Check to make sure docker is running
+```
+sudo systemctl status docker
+
+### IF it is NOT running ###
+sudo systemctl start docker
+```
+
 Create a new file "/etc/docker/daemon.json". 
 ```
 sudo nano /etc/docker/daemon.json
@@ -109,7 +117,7 @@ mkdir dojo
 cd temp_dojo
 git clone https://github.com/Samourai-Wallet/samourai-dojo.git
 cd
-mv samourai-dojo/* dojo/
+mv samourai-dojo/* ~/dojo/
 ```
 # Now all your Dojo documents are all in your permenant Dojo Directory. Let's go in an modify the conf files
 
