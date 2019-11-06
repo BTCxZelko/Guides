@@ -105,10 +105,11 @@ WARNING: No cpu cfs period support
  Docker Root Dir: /mnt/usb/docker
  ```
 
-## 5. Verify python3 is installed and if not install
+## 5. Verify python3 and git are installed and if not install
 ```
 python3 --version
 sudo pacman -S python (only if python3 is not installed)
+sudo pacman -S git
 ```
 ## 6. Pull and Configure Dojo repo (v1.2 at time of writing)
 ```
@@ -188,6 +189,22 @@ nano Dockerfile
     FROM    mariadb:latest
 ----------
 ```
+3. 
+```
+cd ..
+cd tor
+nano Dockerfile
+------------------
+## Edit line 12 from:
+ENV     GOLANG_ARCHIVE      go1.11.13.linux-amd64.tar.gz
+## Edit line 12 to:
+ENV     GOLANG_ARCHIVE      go1.13.3.linux-arm64.tar.gz
+## Edit line 13 from:
+ENV     GOLANG_SHA256       50fe8e13592f8cf22304b9c4adfc11849a2c3d281b1d7e09c924ae24874c6daa
+## Edit line 13 to:
+ENV     GOLANG_SHA256       9fa65ae42665baff53802091b49b83af6f2e397986b6cbea2ae30e2c7ee0f2f2
+```
+
 **Save and exit with Ctrl+X, Y, Enter**
 ```
 ## Go back to main dojo directory dojo/docker/my-dojo
