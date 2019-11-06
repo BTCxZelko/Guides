@@ -1,4 +1,4 @@
-# Systemd service files to auto start programs
+# Automatically Start Dojo using External Bitcoind setup
 <sub> By jaimefoo
 
 Assuming we have our `dojo` folder at `${HOME}/dojo`, we'll create a shell script in `${HOME}/bin` to start this program as needed:
