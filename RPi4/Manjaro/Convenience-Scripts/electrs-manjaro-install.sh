@@ -5,7 +5,6 @@ CYAN='\033[0;36m'
 NC='\033[0m'
 # No Color
 
-
 echo -e "${YELLOW}"
 echo "***"
 echo "Welcome to Ronin Dojo - Electrs Install"
@@ -66,7 +65,7 @@ echo "Installation Complete"
 echo "***"
 sleep 3s
 
-# Make electrs database dir
+# Make electrs database dir and give permissions
 echo -e "${CYAN}" 
 echo "***"
 echo "Creating Database location for Electrs"
@@ -90,6 +89,7 @@ echo "Installing Electrs...this may take some time"
 echo "***"
 echo -e "${NC}"
 sleep 1s
+cd $HOME
 git clone https://github.com/romanz/electrs /home/$USER/electrs
 cd /home/$USER/electrs
 cargo build --release
@@ -107,7 +107,7 @@ echo -e "${NC}"
 sleep 1s
 RPC_USER=$(sudo cat /home/$USER/dojo/docker/my-dojo/conf/docker-bitcoind.conf | grep BITCOIND_RPC_USER= | cut -c 19-)
 RPC_PASS=$(sudo cat /home/$USER/dojo/docker/my-dojo/conf/docker-bitcoind.conf | grep BITCOIND_RPC_PASSWORD= | cut -c 23-)
-mkdir /home/$USER/.electrs
+sudo mkdir /home/electrs/.electrs
 touch /home/$USER/config.toml
 chmod 600 /home/$USER/config.toml || exit 1 
 cat > /home/$USER/config.toml <<EOF
@@ -127,15 +127,17 @@ echo "Editting torrc..."
 echo "***"
 echo -e "${NC}"
 sleep 1s
-####EDIT THE LINE NUMBERS
-sudo sed -i '78i HiddenServiceDir /var/lib/tor/hidden_service/electrs' /etc/tor/torrc
+sudo sed -i '78i HiddenServiceDir /mnt/usb/tor/hidden_service/' /etc/tor/torrc
 sudo sed -i '79i HiddenServiceVersion 3' /etc/tor/torrc
 sudo sed -i '80i HiddenServicePort 50001 127.0.0.1:50001' /etc/tor/torrc
-sudo systemctl restart tor
 echo -e "${CYAN}"
 echo "***"
 echo "Edit complete"
-sleep 3s
+sleep 1s
+echo "Restarting Tor"
+sudo systemctl restart tor
+sleep 1s
+echo "Restart Complete"
 
 # create Electrs tmux session and start Electrs
 echo -e "${CYAN}"
@@ -145,16 +147,18 @@ echo "***"
 echo -e "${NC}"
 sleep 1s
 cd /home/$USER/electrs
+tmux new -s electrs -d
 sleep 1s
+cd /home/$USER/electrs
 tmux new -s electrs -d
 tmux send-keys -t 'electrs' "cargo run --release -- -vvv --timestamp  --index-batch-size=100 --db-dir /mnt/usb/electrs/db --electrum-rpc-addr="0.0.0.0:50001" --daemon-rpc-addr="127.0.0.1:28256"" ENTER
 sleep 5s
-echo -e "${YELLOW}
+echo -e "${YELLOW}"
 echo "***"
-echo "Electrs is indexing the blockchain...after index is complete you can connect your Electrum Wallet to it"
+echo "Electrs is officially running!"
 sleep 5s
-echo "See the full guide at https://github.com/BTCxZelko/Ronin-Dojo/blob/master/RPi4/Manjaro/Minimal/Electrs.md"
-sleep 10s
+echo "For pairing with GUI head to full guide at https://github.com/BTCxZelko/Ronin-Dojo/blob/master/RPi4/Manjaro/Minimal/Electrs.md"
+
 echo -e "${CYAN}"
 echo "***"
 echo "Exiting now"
