@@ -97,16 +97,24 @@ echo "Editting torrc..."
 echo "***"
 echo -e "${NC}"
 sleep 1s
-sed -i '56d' /etc/tor/torrc
-sed -i '56i ControlPort 9051' /etc/tor/torrc
-sed -i '60d' /etc/tor/torrc
-sed -i '60i CookieAuthentication 1' /etc/tor/torrc
-sed -i '61i CookieAuthFileGroupReadable 1' /etc/tor/torrc
-sudo systemctl restart tor
+sudo sed -i '52d'
+sudo sed -i '52i DataDirectory /mnt/usb/tor' /etc/tor/torrc
+sudo sed -i '56d' /etc/tor/torrc
+sudo sed -i '56i ControlPort 9051' /etc/tor/torrc
+sudo sed -i '60d' /etc/tor/torrc
+sudo sed -i '60i CookieAuthentication 1' /etc/tor/torrc
+sudo sed -i '61i CookieAuthFileGroupReadable 1' /etc/tor/torrc
+sudo mkdir /mnt/usb/tor/
+sudo chown -R tor:tor /mnt/usb/tor/
 echo -e "${CYAN}"
 echo "***"
 echo "Edit complete"
 echo "***"
+sleep 1s
+echo "Restarting Tor"
+sudo systemctl restart tor
+sleep 1s
+echo "Restart Complete"
 sleep 3s
 
 # Initate Whirlpool
@@ -116,7 +124,7 @@ echo "Initating Whirlpool...Be prepared to paste Whirlpool Pairing Code from Mob
 echo "***"
 echo -e "${NC}"
 sleep 1s
-java -jar whirlpool-client-cli-0.9.1-run.jar --init --tor=/usr/bin/tor
+java -jar whirlpool-client-cli-0.9.1-run.jar --init
 echo "***"
 echo "Initiation complete"
 echo "***"
@@ -147,5 +155,5 @@ echo "After you see it running you can close by pressing the following:"
 echo "Ctrl+b then d"
 echo "***"
 echo "For pairing with GUI head to full guide at https://github.com/BTCxZelko/Ronin-Dojo/blob/master/RPi4/Raspbian/Whirlpool-Guide.md#pairing-your-with-the-whirlpool-gui"
-sleep 15s
+sleep 10s
 tmux a -t 'whirlpool'
