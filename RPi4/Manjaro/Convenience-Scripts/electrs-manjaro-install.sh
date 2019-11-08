@@ -139,24 +139,68 @@ sudo systemctl restart tor
 sleep 1s
 echo "Restart Complete"
 
+# sudo nano /etc/systemd/system/electrs.service 
+echo "
+[Unit]
+Description=Electrs
+After=dojo.service
+[Service]
+WorkingDirectory=/home/$USER/electrs
+ExecStart=/home/$USER/electrs/target/release/electrs --index-batch-size=10 --electrum-rpc-addr=\"0.0.0.0:50001\"
+Type=simple
+KillMode=process
+TimeoutSec=60
+Restart=always
+RestartSec=60
+[Install]
+WantedBy=multi-user.target
+" | sudo tee -a /etc/systemd/system/electrs.service 
+
+sudo systemctl enable electrs
+sudo systemctl start electrs
+
+echo ""
+echo "***"
+echo "Starting electrs in the background"
+echo "***"
+echo ""
+
+
 # create Electrs tmux session and start Electrs
-echo -e "${CYAN}"
-echo "***"
-echo "Starting up Electrs..."
-echo "***"
-echo -e "${NC}"
-sleep 1s
-cd /home/$USER/electrs
-tmux new -s electrs -d
-sleep 1s
-cd /home/$USER/electrs
-tmux new -s electrs -d
-tmux send-keys -t 'electrs' "cargo run --release -- -vvv --timestamp  --index-batch-size=100 --db-dir /mnt/usb/electrs/db --electrum-rpc-addr="0.0.0.0:50001" --daemon-rpc-addr="127.0.0.1:28256"" ENTER
-sleep 5s
-echo -e "${YELLOW}"
-echo "***"
+#echo -e "${CYAN}"
+#echo "***"
+#echo "Starting up Electrs with tmux..."
+#echo "***"
+#echo -e "${NC}"
+#sleep 1s
+#cd /home/$USER/electrs
+#tmux new -s electrs -d
+#sleep 1s
+#cd /home/$USER/electrs
+#tmux new -s electrs -d
+#tmux send-keys -t 'electrs' "cargo run --release -- -vvv --timestamp  --index-batch-size=100 --db-dir /mnt/usb/electrs/db --electrum-rpc-addr="0.0.0.0:50001" --daemon-rpc-addr="127.0.0.1:28256"" ENTER
+#sleep 5s
+#echo -e "${YELLOW}"
+#echo "***"
+
 echo "Electrs is officially running!"
 sleep 5s
+TOR_ADDRESS=$(sudo cat /mnt/hdd/tor/electrs/hostname)
+echo ""
+echo "***"
+echo "The Tor Hidden Service address for electrs is:"
+echo "$TOR_ADDRESS"
+echo "Electrum wallet: to connect through Tor open the Tor Browser and start with the options:" 
+sleep 2s
+echo "\`electrum --oneserver --server=$TOR_ADDRESS:50001:s --proxy socks5:127.0.0.1:9050\`"
+echo "***"
+sleep 2s
+echo "or..."
+sleep 2s
+echo "Electrum wallet: to connect through Tor Daemon and start with the options:"
+sleep 2s
+echo "\`electrum --oneserver --server=$TOR_ADDRESS:50001:s --proxy socks5:127.0.0.1:9050\`"
+sleep 2s
 echo "For pairing with GUI head to full guide at https://github.com/BTCxZelko/Ronin-Dojo/blob/master/RPi4/Manjaro/Minimal/Electrs.md"
 
 echo -e "${CYAN}"
