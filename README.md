@@ -35,8 +35,14 @@ You'll need a SD card to flash the OS of choice (we will cover Raspbian and Manj
 For this we recommend: [Samsung EVO+ 64GB](https://www.amazon.com/Samsung-MicroSDXC-Memory-Adapter-MB-MC64GA/dp/B06XFWPXYD/ref=sr_1_4?keywords=EVO%2B+SD+card&qid=1571081610&s=electronics&sr=1-4). You'll need at least 16GB but for the price this is a great deal for a high quality SD card. 
 
 ## Flashing Operating System
-This guide will cover [Raspbian](https://www.raspberrypi.org/downloads/raspbian/), [Manjaro Desktop GUI](https://osdn.net/projects/manjaro-arm/storage/rpi4/), and [Debian](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#1-hardware-requirements) Installations. Follow the links for more information and installation instructions.
->For Manjaro-Arm: **NOTE**: The XFCE is the desktop version and Minimal is best for headless use. The XFCE version is resource heavy and will likely not be able to handle Dojo+Whirlpool+Electrs. For that option install Minimal [here](https://osdn.net/projects/manjaro-arm/storage/rpi4/minimal/19.10/)
+This guide will cover:
+[Raspbian](https://www.raspberrypi.org/downloads/raspbian/) 
+[Manjaro Minimal](https://osdn.net/projects/manjaro-arm/storage/rpi4/minimal/19.10/)
+[Manjaro Desktop GUI](https://osdn.net/projects/manjaro-arm/storage/rpi4/), and 
+
+[Debian](https://github.com/s2l1/Headless-Samourai-Dojo/blob/master/Default_Dojo_Setup.md#1-hardware-requirements) Installations. Follow the links for more information and installation instructions.
+
+>For Manjaro-Arm: **NOTE**: The XFCE is the desktop version and Minimal is best for headless use. The XFCE version is resource heavy and will likely not be able to handle Dojo+Whirlpool+Electrs. For that option install Minimal
 
 ## Cases
 We strongly recommend getting a case that keeps the Pi or Odroid cool. 
