@@ -117,7 +117,6 @@ mkdir temp_dojo
 mkdir dojo
 cd temp_dojo
 git clone https://github.com/Samourai-Wallet/samourai-dojo.git
-cd
 mv samourai-dojo/* ~/dojo/
 ```
 # Now all your Dojo documents are all in your permenant Dojo Directory. Let's go in an modify the conf files
@@ -189,7 +188,7 @@ nano Dockerfile
     FROM    mariadb:latest
 ----------
 ```
-3. 
+3. Edit the Tor Dockerfile
 ```
 cd ..
 cd tor
