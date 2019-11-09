@@ -75,6 +75,17 @@ java -jar whirlpool-client-cli-0.9.1-run.jar --init --tor
 
 The whirlpool client with then close and ask to run again.
 
+But first we need to edit the configuration file to point to tor
+```
+nano whirlpool-cli-config.properties
+-----------------
+### Copy and Paste the following to the end of the file ###
+
+cli.torConfig.executable=/usr/bin/tor
+
+```
+**Save and exit: Ctrl+X, y, Enter**
+
 This time we run a different command:
 
 ```
