@@ -116,6 +116,9 @@ timestamp = true
 jsonrpc_import = true
 db_dir = "/mnt/usb/electrs/db"
 cookie = "$RPC_USER:$RPC_PASS"
+server_banner = "Welcome to your Ronin Personal Electrs Server!"
+daemon_dir = "/mnt/usb/docker/volumes/my-dojo_bitcoind_data/_data" 
+daemon_rpc_addr = "127.0.0.1:28256"
 EOF
 sudo mv /home/$USER/config.toml /home/$USER/.electrs/config.toml
 sleep 3s
@@ -146,7 +149,7 @@ Description=Electrs
 After=dojo.service
 [Service]
 WorkingDirectory=/home/$USER/electrs
-ExecStart=/home/$USER/electrs/target/release/electrs --index-batch-size=10 --electrum-rpc-addr=\"0.0.0.0:50001\"
+ExecStart=/home/$USER/electrs/target/release/electrs --index-batch-size=10
 Type=simple
 KillMode=process
 TimeoutSec=60
@@ -185,7 +188,7 @@ echo ""
 
 echo "Electrs is officially running!"
 sleep 5s
-TOR_ADDRESS=$(sudo cat /mnt/hdd/tor/electrs/hostname)
+TOR_ADDRESS=$(sudo cat /mnt/hdd/tor/hidden_service/hostname)
 echo ""
 echo "***"
 echo "The Tor Hidden Service address for electrs is:"
