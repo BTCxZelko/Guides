@@ -67,6 +67,14 @@ First create the docker directory where we will store all docker data
 ```
 sudo mkdir /mnt/usb/docker
 ```
+Check to make sure docker is running
+```
+sudo systemctl status docker
+
+### IF it is NOT running ###
+sudo systemctl start docker
+```
+
 Create a new file "/etc/docker/daemon.json". 
 ```
 sudo nano /etc/docker/daemon.json
@@ -97,10 +105,11 @@ WARNING: No cpu cfs period support
  Docker Root Dir: /mnt/usb/docker
  ```
 
-## 5. Verify python3 is installed and if not install
+## 5. Verify python3 and git are installed and if not install
 ```
 python3 --version
 sudo pacman -S python (only if python3 is not installed)
+sudo pacman -S git
 ```
 ## 6. Pull and Configure Dojo repo (v1.2 at time of writing)
 ```
@@ -109,7 +118,7 @@ mkdir dojo
 cd temp_dojo
 git clone https://github.com/Samourai-Wallet/samourai-dojo.git
 cd
-mv samourai-dojo/* dojo/
+mv samourai-dojo/* ~/dojo/
 ```
 # Now all your Dojo documents are all in your permenant Dojo Directory. Let's go in an modify the conf files
 
@@ -180,6 +189,22 @@ nano Dockerfile
     FROM    mariadb:latest
 ----------
 ```
+3. 
+```
+cd ..
+cd tor
+nano Dockerfile
+------------------
+## Edit line 12 from:
+ENV     GOLANG_ARCHIVE      go1.11.13.linux-amd64.tar.gz
+## Edit line 12 to:
+ENV     GOLANG_ARCHIVE      go1.13.3.linux-arm64.tar.gz
+## Edit line 13 from:
+ENV     GOLANG_SHA256       50fe8e13592f8cf22304b9c4adfc11849a2c3d281b1d7e09c924ae24874c6daa
+## Edit line 13 to:
+ENV     GOLANG_SHA256       9fa65ae42665baff53802091b49b83af6f2e397986b6cbea2ae30e2c7ee0f2f2
+```
+
 **Save and exit with Ctrl+X, Y, Enter**
 ```
 ## Go back to main dojo directory dojo/docker/my-dojo
@@ -257,3 +282,20 @@ To                         Action      From
 If you are looking to get the most out of your New RONIN DOJO node visit the below sections: 
    - ELECTRS: connect your hardware devices to your own private server powered by your RONIN Dojo
    - [WHIRLPOOL](https://github.com/BTCxZelko/Ronin-Dojo/blob/master/RPi4/Manjaro/Whirlpool-Guide.md): Run your own whirlpool-client-cli so you can keep your mixes going 24/7 
+
+## Support
+
+If you appreciate our work and wish to support our continued efforts in providing free, unencumbered, open source code that enhances your sovereignty please consider a donation.
+
+### Address
+
+3MbsfzyXG1xeojmH5jju8XRePdfZLu6gwa
+
+[![address](http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=bc1qma3vyljvz0n3n0e7czaewx8tq5heugv2kvrcq2&qzone=1&margin=0&size=200x200&ecc=L)](https://oxt.me/address/3MbsfzyXG1xeojmH5jju8XRePdfZLu6gwa)
+
+### PayNym (BIP47)
+
++supersnowflake4DD
+PM8TJgV7iwMBnEUEQemstA74aXas17M5uF4JvN1Q36SknCqSxgs6VHMb6ftGcKh2Xrb6kppJvzjSqDtwWRSAkn7v6YejN8D4Fi1jk6nBsCDRqSQrWkD5 
+
+[![BIP47 payment code](http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=PM8TJgV7iwMBnEUEQemstA74aXas17M5uF4JvN1Q36SknCqSxgs6VHMb6ftGcKh2Xrb6kppJvzjSqDtwWRSAkn7v6YejN8D4Fi1jk6nBsCDRqSQrWkD5&qzone=1&margin=0&size=200x200&ecc=L)](https://paynym.is/+supersnowflake4DD)

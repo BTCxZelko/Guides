@@ -43,6 +43,13 @@ We strongly recommend getting a case that keeps the Pi or Odroid cool.
 1. For RPi4: 
    - For a Custom Samourai Wallet Ronin Dojo Case, we highly recommend CrytpoCloak! Comes with storage for Pi4 AND external storage device (check size requirements) [Check it out here](https://thecryptocloak.com/product/samourai/) 
       - NOTE: WE DO NOT RECEIVE COMPENSATION FOR THEIR PRODUCT, but an awesome product at that. 
+
+<p align='center'>
+  <a href='https://thecryptocloak.com/product/samourai/'>
+    <img src='https://thecryptocloak.com/wp-content/uploads/2019/10/IMG_20191029_061006.jpg' alt='screenshot' />
+  </a>
+</p>
+
    - Either with active cooling cases such as:[Flirc](https://www.amazon.com/Flirc-Raspberry-Pi-Case-Silver/dp/B07WG4DW52/ref=sr_1_8?keywords=pi4+case&qid=1571082492&sr=8-8) 
    - Or a case with a fan such as [Miuzei](https://www.amazon.com/Miuzei-Raspberry-Cooling-Heat-Sinks-Supply/dp/B07TTN1M7G/ref=sr_1_5?crid=2FLR4GW4Y32PN&keywords=pi4%2Bcase%2Bwith%2Bfan&qid=1571082607&sprefix=pi4%2Bcase%2B%2Caps%2C222&sr=8-5&th=1) 
 
