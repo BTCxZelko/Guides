@@ -126,7 +126,7 @@ And now let's launch it:
 
 Ok so you'll be shown with two options: Standalone CLI or Remote CLI. Select remote CLI (our pi)
 
-Next you'll need to enter your Pi's IP address: 192.168.X.XXX 
+Next you'll need to enter your Pi's IP address: http://192.168.X.XXX 
 
 **NOTE: If you do not know your Pi's IP address, go into terminal and type:**
 
