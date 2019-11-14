@@ -134,7 +134,7 @@ mv samourai-dojo/* ../dojo/
 
 ### 1. First bitcoid conf file
 ```
-cd dojo/docker/my-dojo/conf
+cd ../dojo/docker/my-dojo/conf
 nano docker-bitcoind.conf.tpl
 -----------
 BITCOIND_RPC_USER=dojorpc  <-- edit
