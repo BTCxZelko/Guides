@@ -128,8 +128,7 @@ mkdir temp_dojo
 mkdir dojo
 cd temp_dojo
 git clone https://github.com/Samourai-Wallet/samourai-dojo.git
-cd
-mv samourai-dojo/* dojo/
+mv samourai-dojo/* ../dojo/
 ```
 ## 8. Now all your Dojo documents are all in your permenant Dojo Directory. Let's go in an modify the confs for you
 
