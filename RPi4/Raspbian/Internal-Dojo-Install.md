@@ -128,14 +128,13 @@ mkdir temp_dojo
 mkdir dojo
 cd temp_dojo
 git clone https://github.com/Samourai-Wallet/samourai-dojo.git
-cd
-mv samourai-dojo/* dojo/
+mv samourai-dojo/* ../dojo/
 ```
 ## 8. Now all your Dojo documents are all in your permenant Dojo Directory. Let's go in an modify the confs for you
 
 ### 1. First bitcoid conf file
 ```
-cd dojo/docker/my-dojo/conf
+cd ../dojo/docker/my-dojo/conf
 nano docker-bitcoind.conf.tpl
 -----------
 BITCOIND_RPC_USER=dojorpc  <-- edit
