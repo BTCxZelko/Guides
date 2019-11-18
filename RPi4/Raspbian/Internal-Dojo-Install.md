@@ -208,6 +208,22 @@ nano Dockerfile
     FROM    hypriot/rpi-mysql:latest
 ----------
 ```
+### 3. Edit the Tor Dockerfile (assumes you are still in mysql dir)
+```
+cd ..
+cd tor
+nano Dockerfile
+----------
+## Edit line 12 from:
+    ENV     GOLANG_ARCHIVE      go1.11.13.linux-amd64.tar.gz
+## Edit line 12 to:
+    ENV     GOLANG_ARCHIVE      go1.13.4.linux-armv6l.tar.gz
+## Edit line 13 from:
+    ENV     GOLANG_SHA256       50fe8e13592f8cf22304b9c4adfc11849a2c3d281b1d7e09c924ae24874c6daa
+## Edit line 13 to:
+    ENV     GOLANG_SHA256       9f76e6353c9ae2dcad1731b7239531eb8be2fe171f29f2a9c5040945a930fd41
+----------
+```
 **Save and exit with Ctrl+X, Y, Enter**
 ```
 ## Go back to main dojo directory dojo/docker/my-dojo
