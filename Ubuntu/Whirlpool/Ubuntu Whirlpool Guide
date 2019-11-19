@@ -1,0 +1,36 @@
+Welcome to the Whirlpool Installation Guide
+
+The Raspbian Guide mostly works,however there are some commands that need to be changed.
+In this guide the only commands listed will be the ones that need to be changed.
+so follow the Raspbian guide and just modify the commands listed on this guide.
+
+
+Source: https://github.com/Samourai-Wallet/Whirlpool
+
+
+Instead of sudo adduser -m toruser
+Use adduser toruser
+
+Instead of
+
+sudo usermod -aG toruser
+Use usermod -aG sudo toruser
+
+If you try to install TOR with the raspbian's guide instructions you will run
+into dependency errors,so
+
+Instead of
+
+
+deb https://deb.torproject.org/torproject.org stretch main
+deb-src https://deb.torproject.org/torproject.org stretch main
+
+Add the following to /etc/apt/sources.list
+
+deb https://deb.torproject.org/torproject.org bionic main
+deb-src https://deb.torproject.org/torproject.org bionic main
+
+
+that is basically the only changes you need to make.
+
+Thank you for following the guide!
