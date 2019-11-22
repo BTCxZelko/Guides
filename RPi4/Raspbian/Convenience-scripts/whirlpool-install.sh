@@ -69,7 +69,7 @@ echo "Pull Whirlpool from github"
 echo "***"
 echo -e "${NC}"
 sleep 1s
-curl -fsSL https://github.com/Samourai-Wallet/whirlpool-runtimes/releases/download/cli-0.9.1/whirlpool-client-cli-0.9.1-run.jar
+wget https://github.com/Samourai-Wallet/whirlpool-runtimes/releases/download/cli-0.9.1/whirlpool-client-cli-0.9.1-run.jar
 echo -e "${CYAN}"
 echo "***"
 echo "Download complete"
