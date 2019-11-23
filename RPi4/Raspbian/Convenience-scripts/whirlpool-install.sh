@@ -90,12 +90,25 @@ echo "Initation complete"
 echo "***"
 sleep 3s
 
+# open port 8899 to local host
+echo "***"
+echo "adding UFW rule to allow 8899 for Whirlpool GUI"
+echo "***"
+sleep 1s
+echo -e "${NC}"
+ufw allow from 192.168.1.1/24 to any port 8899 comment 'Whirlpool GUI access restricted to local LAN only'
+sleep 1s
+echo -e "${RED}"
+echo "Rule Updated"
+sleep 1s
+
 # display API pairing key for GUI
 echo "Copy your APIkey to connect your GUI"
 APIkey=$(sudo cat /home/$HOME/whirlpool/whirlpool-configuration | grep cli.Apikey= | cut -c 12-)
 echo "***"
 echo "$APIkey"
-echo "***"
+echo "
+***"
 sleep 5s
 
 # create whirlpool tmux session and start Whirlpool
@@ -111,10 +124,10 @@ tmux send-keys -t 'whirlpool' "java -jar whirlpool-client-cli-0.9.1-run.jar --se
 sleep 2s
 echo -e "${YELLOW}"
 echo "***"
-echo "Entering tmux Whirlpool Session"
+echo "Entering Whirlpool Session"
 sleep 1s
 echo -e "${YELLOW}"
-echo "Type in your Wallet Passphrase when prompted"
+echo "Type in your Samourai Wallet Passphrase when prompted"
 sleep 3s
 echo -e "${YELLOW}"
 echo "***"
