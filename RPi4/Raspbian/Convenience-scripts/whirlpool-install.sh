@@ -1,3 +1,5 @@
+RED='\033[0;31m'
+# used for color with ${RED}
 YELLOW='\033[1;33m'
 # used for color with ${YELLOW}
 CYAN='\033[0;36m'
@@ -15,10 +17,12 @@ echo -e "${RED}"
 echo "***"
 echo "Install and run Whirlpool Client CLI for continuous mixing"
 echo "Intended for Raspberry Pi 4-4GB RAM + Raspbian/Debian based system"
+echo "WARNING: YOU MUST HAVE TOR INSTALLED ON SYSTEM BEFORE STARTING"
+echo "IF YOU DONT HAVE IT INSTALLED PRESS Ctrl+C to cancel this script and install tor before continuing"
 echo "***"
-sleep 5s
+sleep 10s
 
-# install instal openjdk
+# install install openjdk
 echo -e "${RED}"
 echo "***"
 echo "Installing Whirlpool Dependencies"
@@ -32,20 +36,6 @@ echo "Download complete"
 echo "***"
 sleep 2s
 
-# install instal openjdk
-echo -e "${RED}"
-echo "***"
-echo "Installing tmux"
-echo "***"
-echo -e "${NC}"
-sleep 1s
-sudo apt-get install tmux -y
-echo -e "${RED}"
-echo "***"
-echo "Download complete"
-echo "***"
-sleep 2s
-
 # create whirlpool directory
 echo -e "${RED}" 
 echo "***"
@@ -53,87 +43,91 @@ echo "Creating Whirlpool working directory"
 echo "***"
 echo -e "${NC}"
 sleep 1s
-cd $HOME
-mkdir whirlpool
-cd whirlpool
+mkdir ~/whirlpool
+cd ~/whirlpool
 echo -e "${RED}"
 echo "***"
 echo "Done"
 echo "***"
-sleep 2s
+sleep 1s
 
 # pull Whirlpool run times
-echo -e "${RED}" 
+echo -e "${RED}"
 echo "***"
 echo "Pull Whirlpool from github"
 echo "***"
 echo -e "${NC}"
 sleep 1s
-wget https://github.com/Samourai-Wallet/whirlpool-runtimes/releases/download/cli-0.9.1/whirlpool-client-cli-0.9.1-run.jar
+wget -O whirlpool.jar https://github.com/Samourai-Wallet/whirlpool-client-cli/releases/download/0.9.3/whirlpool-client-cli-0.9.3-run.jar
 echo -e "${RED}"
 echo "***"
 echo "Download complete"
 echo "***"
-sleep 3s
+sleep 2s
 
-# initate Whirlpool
-echo -e "${RED}" 
+# set Whirlpool as systemd service
+echo -e "${RED}"
 echo "***"
-echo "Initating Whirlpool...Be prepared to paste Whirlpool Pairing Code from Mobile Wallet and Passphrase"
+echo "Setting Whirlpool-Client-CLI as a systemd service and enabling at start"
 echo "***"
 echo -e "${NC}"
 sleep 1s
-java -jar whirlpool-client-cli-0.9.1-run.jar --init --tor
 echo -e "${RED}"
 echo "***"
-echo "Initation complete"
+echo "Setting Whirlpool as a service..."
 echo "***"
+echo -e "${NC}"
+sleep 2s
+
+USER=$(sudo cat /etc/passwd | grep 1000 | awk -F: '{ print $1}' | cut -c 1-)
+echo "
+[Unit]
+Description=whirlpool
+After=tor.service
+[Service]
+WorkingDirectory=/home/$USER/whirlpool
+ExecStart=/usr/bin/java -jar /home/$USER/whirlpool/whirlpool.jar --server=mainnet --tor --listen
+User=$USER
+Group=$USER
+Type=simple
+KillMode=process
+TimeoutSec=60
+Restart=always
+RestartSec=60
+[Install]
+WantedBy=multi-user.target
+" | sudo tee -a /etc/systemd/system/whirlpool.service
+
+sudo systemctl daemon-reload
 sleep 3s
 
+echo -e "${RED}"
+echo "***"
+echo "Starting whirlpool in the background..."
+echo "***"
+echo -e "${NC}"
+sleep 2s
+sudo systemctl start whirlpool
+sleep 2s
+
 # open port 8899 to local host
+echo -e "${RED}"
 echo "***"
 echo "adding UFW rule to allow 8899 for Whirlpool GUI"
 echo "***"
 sleep 1s
 echo -e "${NC}"
-ufw allow from 192.168.1.1/24 to any port 8899 comment 'Whirlpool GUI access restricted to local LAN only'
+sudo ufw allow from 192.168.1.1/24 to any port 8899 comment 'Whirlpool GUI access restricted to local LAN only'
 sleep 1s
 echo -e "${RED}"
 echo "Rule Updated"
 sleep 1s
 
 # display API pairing key for GUI
-echo "Copy your APIkey to connect your GUI"
-APIkey=$(sudo cat /home/$HOME/whirlpool/whirlpool-configuration | grep cli.Apikey= | cut -c 12-)
-echo "***"
-echo "$APIkey"
-echo "
-***"
-sleep 5s
-
-# create whirlpool tmux session and start Whirlpool
-echo -e "${RED}"
-echo "***"
-echo "Opening tmux session and Start Whirlpool"
-echo "***"
-echo -e "${NC}"
+echo "Install Whirlpool GUI to finish pairing"
 sleep 1s
-tmux new -s whirlpool -d
-sleep 1s
-tmux send-keys -t 'whirlpool' "java -jar whirlpool-client-cli-0.9.1-run.jar --server=mainnet --tor --auto-mix --authenticate --mixs-target=0 --listen" ENTER
-sleep 2s
-echo -e "${YELLOW}"
-echo "***"
-echo "Entering Whirlpool Session"
-sleep 1s
-echo -e "${YELLOW}"
-echo "Type in your Samourai Wallet Passphrase when prompted"
+echo "After pairing for restarts simply type:"
+echo "sudo systemctl restart whirlpool"
 sleep 3s
-echo -e "${YELLOW}"
-echo "***"
-echo "After you see it running you can close by pressing the following:"
-echo "Ctrl+b then d"
-echo "***"
-echo "For pairing with GUI head to full guide at https://github.com/BTCxZelko/Ronin-Dojo/blob/master/RPi4/Raspbian/Whirlpool-Guide.md#pairing-your-with-the-whirlpool-gui"
-sleep 5s
-tmux a -t 'whirlpool'
+echo "Enjoy mixing!"
+fi
