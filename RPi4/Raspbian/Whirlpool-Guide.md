@@ -18,7 +18,7 @@ sudo apt-get install openjdk-8-jre
 cd $HOME
 mkdir whirlpool
 cd whirlpool
-wget https://github.com/Samourai-Wallet/whirlpool-runtimes/releases/download/cli-0.9.1/whirlpool-client-cli-0.9.1-run.jar
+wget -O whirlpool.jar https://github.com/Samourai-Wallet/whirlpool-client-cli/releases/download/0.9.3/whirlpool-client-cli-0.9.3-run.jar
 ```
 
    3. Install Tor outside docker if you haven't already.
@@ -97,7 +97,7 @@ Make sure we are in the correct directory and initiate the whirlpool client
 ```
 cd whirlpool
 tmux new -s whirlpool
-java -jar whirlpool-client-cli-0.9.1-run.jar --init --tor
+java -jar whirlpool.jar --init --tor
 ```
    - This will ask for your pairing code, Paste it when prompted with Ctrl+Shift+V
    - When it displays the API key. Copy that key and send to your main computer however is most secure for you. 
@@ -108,7 +108,7 @@ The whirlpool client with then close and ask to run again.
 This time we run a different command:
 
 ```
-java -jar whirlpool-client-cli-0.9.1-run.jar --server=mainnet --tor --auto-mix --authenticate --mixs-target=0 --listen
+java -jar whirlpool.jar --server=mainnet --tor --auto-mix --authenticate --mixs-target=0 --listen
 ### NOTE: If you want the mixing target to be a different number other than infinity change the mixs-target to desired number
 ```
 
