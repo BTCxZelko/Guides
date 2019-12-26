@@ -116,7 +116,7 @@ sudo pacman -S git
 mkdir temp_dojo
 mkdir dojo
 cd temp_dojo
-git clone https://github.com/Samourai-Wallet/samourai-dojo.git
+git clone -b master https://github.com/Samourai-Wallet/samourai-dojo.git
 mv samourai-dojo/* ~/dojo/
 ```
 # Now all your Dojo documents are all in your permenant Dojo Directory. Let's go in an modify the conf files
